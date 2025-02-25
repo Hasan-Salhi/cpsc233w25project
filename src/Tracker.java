@@ -64,15 +64,19 @@ public class Tracker {
 
     /**
      * Increases the win count (by one) in a Pokemon's ArrayList in statistics.
+     *
+     * @param pokemon, a String representing the Pokemon getting a win.
      */
-    public static void addWin() {
+    public static void addWin(String pokemon) {
         //TODO
     }
 
     /**
      * Increases the loss count (by one) in a Pokemon's ArrayList in statistics.
+     *
+     * @param pokemon, a String representing the Pokemon getting a loss.
      */
-    public static void addLoss() {
+    public static void addLoss(String pokemon) {
         //TODO
     }
 
@@ -207,10 +211,22 @@ public class Tracker {
                 addItem(pokemon, item);
             }
             else if (option == 5) {
-                addWin();
+                //"Fake" input to parse out the extra \n when the user presses enter.
+                scan.nextLine();
+
+                System.out.println("\nEnter a Pokemon:");
+                String pokemon = scan.nextLine();
+
+                addWin(pokemon);
             }
             else if (option == 6) {
-                addLoss();
+                //"Fake" input to parse out the extra \n when the user presses enter.
+                scan.nextLine();
+
+                System.out.println("\nEnter a Pokemon:");
+                String pokemon = scan.nextLine();
+
+                addLoss(pokemon);
             }
             else if (option == 7) {
                 getAllPokemon();
