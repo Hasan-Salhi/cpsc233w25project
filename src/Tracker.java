@@ -6,49 +6,109 @@ import java.util.ArrayList;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.0 - February 25, 2025
+ * @version 1.1 - February 25, 2025
  */
 public class Tracker {
+    private static ArrayList<Integer> teams = new ArrayList<>();
+    private static ArrayList<ArrayList<String>> statistics = new ArrayList<>();
+
+    /**
+     * Adds a new team number to the teams ArrayList.
+     */
     public static void addTeam() {
         //TODO
     }
 
-    public static void addPokemon(String name, int hp, String typeOne, String typeTwo) {
+    /**
+     * Adds a new Pokemon to the statistics ArrayList.
+     * Pokemon are represented by an ArrayList containing their
+     * team, name, HP, attack, type, and second type.
+     * Two empty Strings are added for holding a move and item
+     * (elements 6 and 7).
+     * Two ints (set to zero) are added for holding the Pokemon's
+     * wins and losses (elements 8 and 9).
+     *
+     * @param team, an int representing the Pokemon's team number.
+     * @param name, a String representing the Pokemon's name.
+     * @param hp, an int representing the Pokemon's hit points.
+     * @param attack, an int representing the Pokemon's Attack.
+     * @param typeOne, a String representing the Pokemon's type.
+     * @param typeTwo, a String representing the Pokemon's second type,
+     *                 "none" if not applicable.
+     */
+    public static void addPokemon(int team, String name, int hp, int attack, String typeOne, String typeTwo) {
         //TODO
     }
 
-    public static void addMove(String move) {
+    /**
+     * Adds a new move to a Pokemon's ArrayList in statistics.
+     * Replaces any preexisting moves in the same index.
+     *
+     * @param pokemon, a String representing the Pokemon getting a new move.
+     * @param move, a String representing the Pokemon's move.
+     */
+    public static void addMove(String pokemon, String move) {
         //TODO
     }
 
-    public static void addItem(String item) {
+    /**
+     * Adds a new item to a Pokemon's ArrayList in statistics.
+     * Replaces any preexisting items in the same index.
+     *
+     * @param pokemon, a String representing the Pokemon getting a new move.
+     * @param item, a String representing the Pokemon's item.
+     */
+    public static void addItem(String pokemon, String item) {
         //TODO
     }
 
+    /**
+     * Increases the win count (by one) in a Pokemon's ArrayList in statistics.
+     */
     public static void addWin() {
         //TODO
     }
 
+    /**
+     * Increases the loss count (by one) in a Pokemon's ArrayList in statistics.
+     */
     public static void addLoss() {
         //TODO
     }
 
+    /**
+     * Prints the data stored in the statistics ArrayList.
+     */
     public static void getAllPokemon() {
         //TODO
     }
 
+    /**
+     * Prints the names/Attacks of the top 3 Pokemon with the highest Attack.
+     */
     public static void getTopAttack () {
         //TODO
     }
 
+    /**
+     * Prints the names/HPs of the top 3 Pokemon with the highest HP.
+     */
     public static void getTopHP () {
         //TODO
     }
 
+    /**
+     * Prints the average Attack of very Pokemon in statistics.
+     */
     public static void getAverageAttack () {
         //TODO
     }
 
+    /**
+     * Prints every Pokemon with the same type in the statistics ArrayList.
+     *
+     * @param type, a String representing the type to search for.
+     */
     public static void getAllType (String type) {
         //TODO
     }
@@ -62,11 +122,11 @@ public class Tracker {
                 "Add Data\n" +
                 "1) add a team\n" +
                 "2) add a Pokemon to a team with a name, HP (Hit Points),\n" +
-                "   type, and second type (optional)\n" +
+                "   Attack, type, and second type (optional)\n" +
                 "\n" +
                 "Add Pokemon Data\n" +
-                "3) add a move to a Pokemon\n" +
-                "4) add an item to a Pokemon\n" +
+                "3) add a move to a Pokemon (max. 1)\n" +
+                "4) add an item to a Pokemon (max. 1)\n" +
                 "5) add a win to a Pokemon\n" +
                 "6) add a loss to a Pokemon\n" +
                 "\n" +
@@ -80,6 +140,9 @@ public class Tracker {
                 "11) list of all Pokemon of a certain type\n");
     }
 
+    /**
+     * Main method for running the tracker.
+     */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         boolean trackerOn = true;
@@ -96,15 +159,20 @@ public class Tracker {
             else if (option == 1) {
                 addTeam();
             }
+            //Assumes the input for team and hp are valid integers.
             else if (option == 2) {
+                System.out.println("\nEnter the Pokemon's team number:");
+                int team = scan.nextInt();
+
                 //"Fake" input to parse out the extra \n when the user presses enter.
                 scan.nextLine();
 
-                System.out.println("\nEnter the Pokemon's name:");
+                System.out.println("Enter the Pokemon's name:");
                 String name = scan.nextLine();
-
                 System.out.println("Enter the Pokemon's HP:");
                 int hp = scan.nextInt();
+                System.out.println("Enter the Pokemon's Attack:");
+                int attack = scan.nextInt();
 
                 //"Fake" input to parse out the extra \n when the user presses enter.
                 scan.nextLine();
@@ -114,25 +182,29 @@ public class Tracker {
                 System.out.println("Enter the Pokemon's second type (if not applicable, enter \"none\"):");
                 String typeTwo = scan.nextLine();
 
-                addPokemon(name, hp, typeOne, typeTwo);
+                addPokemon(team, name, hp, attack, typeOne, typeTwo);
             }
             else if (option == 3) {
                 //"Fake" input to parse out the extra \n when the user presses enter.
                 scan.nextLine();
 
+                System.out.println("\nEnter a Pokemon:");
+                String pokemon = scan.nextLine();
                 System.out.println("\nEnter a move:");
                 String move = scan.nextLine();
 
-                addMove(move);
+                addMove(pokemon, move);
             }
             else if (option == 4) {
                 //"Fake" input to parse out the extra \n when the user presses enter.
                 scan.nextLine();
 
+                System.out.println("\nEnter a Pokemon:");
+                String pokemon = scan.nextLine();
                 System.out.println("\nEnter an item:");
                 String item = scan.nextLine();
 
-                addItem(item);
+                addItem(pokemon, item);
             }
             else if (option == 5) {
                 addWin();
