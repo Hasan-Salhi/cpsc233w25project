@@ -7,15 +7,15 @@ import java.util.Arrays;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.2 - February 25, 2025
+ * @version 1.3 - February 25, 2025
  */
 public class Tracker {
     private static ArrayList<Integer> teams = new ArrayList<>();
-    private static ArrayList<ArrayList<String>> statistics = new ArrayList<>();
+    private static ArrayList<ArrayList<Object>> statistics = new ArrayList<>();
 
     /**
      * Adds a new team number to the teams ArrayList.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      */
     public static void addTeam() {
         //WIP
@@ -31,6 +31,7 @@ public class Tracker {
      * (elements 6 and 7).
      * Two ints (set to zero) are added for holding the Pokemon's
      * wins and losses (elements 8 and 9).
+     * Done by Hasan Salhi.
      *
      * @param team, an int representing the Pokemon's team number.
      * @param name, a String representing the Pokemon's name.
@@ -70,15 +71,22 @@ public class Tracker {
 
     /**
      * Increases the win count (by one) in a Pokemon's ArrayList in statistics.
+     * Done by Jade Torres.
      *
      * @param pokemon, a String representing the Pokemon getting a win.
      */
     public static void addWin(String pokemon) {
-        //TODO
+        //WIP
+        for (ArrayList pokemon : statistics) {
+            if (pokemon.getFirst().equals(pokemon)) {
+                //TODO
+            }
+        }
     }
 
     /**
      * Increases the loss count (by one) in a Pokemon's ArrayList in statistics.
+     * Done by Jade Torres
      *
      * @param pokemon, a String representing the Pokemon getting a loss.
      */
@@ -125,6 +133,7 @@ public class Tracker {
 
     /**
      * Prints the menu of the tracker.
+     * Done by Jade Torres.
      */
     public static void getMenu() {
         System.out.println("""
@@ -155,6 +164,7 @@ public class Tracker {
 
     /**
      * Main method for running the tracker.
+     * Done by Jade Torres.
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
