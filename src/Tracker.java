@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.1 - February 25, 2025
+ * @version 1.2 - February 25, 2025
  */
 public class Tracker {
     private static ArrayList<Integer> teams = new ArrayList<>();
@@ -14,9 +14,12 @@ public class Tracker {
 
     /**
      * Adds a new team number to the teams ArrayList.
+     * Done by Hasan Salhi
      */
     public static void addTeam() {
-        //TODO
+        //WIP
+        int teamNumber = teams.size() + 1;
+        teams.add(teamNumber);
     }
 
     /**
@@ -37,7 +40,9 @@ public class Tracker {
      *                 "none" if not applicable.
      */
     public static void addPokemon(int team, String name, int hp, int attack, String typeOne, String typeTwo) {
-        //TODO
+        //WIP
+        ArrayList<Object> pokemon = new ArrayList<>(Arrays.asList(team,name,hp,attack,typeOne,typeTwo,"","",0,0));
+        statistics.add(pokemon);
     }
 
     /**
