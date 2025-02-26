@@ -121,27 +121,30 @@ public class Tracker {
      * Prints the menu of the tracker.
      */
     public static void getMenu() {
-        System.out.println("\n********************\n" +
-                "\n" +
-                "Add Data\n" +
-                "1) add a team\n" +
-                "2) add a Pokemon to a team with a name, HP (Hit Points),\n" +
-                "   Attack, type, and second type (optional)\n" +
-                "\n" +
-                "Add Pokemon Data\n" +
-                "3) add a move to a Pokemon (max. 1)\n" +
-                "4) add an item to a Pokemon (max. 1)\n" +
-                "5) add a win to a Pokemon\n" +
-                "6) add a loss to a Pokemon\n" +
-                "\n" +
-                "Output General\n" +
-                "7) ask for all Pokemon to be printed\n" +
-                "\n" +
-                "Output Special\n" +
-                "8) ask for the top 3 Pokemon with the highest Attack\n" +
-                "9) ask for the top 3 Pokemon with the highest HP\n" +
-                "10) ask for the average Attack of all Pokemon\n" +
-                "11) list of all Pokemon of a certain type\n");
+        System.out.println("""
+                
+                ********************
+                
+                Add Data
+                1) add a team
+                2) add a Pokemon to a team with a name, HP (Hit Points),
+                   Attack, type, and second type (optional)
+                
+                Add Pokemon Data
+                3) add a move to a Pokemon (max. 1)
+                4) add an item to a Pokemon (max. 1)
+                5) add a win to a Pokemon
+                6) add a loss to a Pokemon
+                
+                Output General
+                7) ask for all Pokemon to be printed
+                
+                Output Special
+                8) ask for the top 3 Pokemon with the highest Attack
+                9) ask for the top 3 Pokemon with the highest HP
+                10) ask for the average Attack of all Pokemon
+                11) list of all Pokemon of a certain type
+                """);
     }
 
     /**
