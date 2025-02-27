@@ -71,27 +71,43 @@ public class Tracker {
 
     /**
      * Increases the win count (by one) in a Pokemon's ArrayList in statistics.
+     * Applies to all Pokemon with the same name.
      * Done by Jade Torres.
      *
      * @param pokemon, a String representing the Pokemon getting a win.
      */
     public static void addWin(String pokemon) {
-        //WIP
-        /*for (ArrayList pokemon : statistics) {
-            if (pokemon.getFirst().equals(test)) {
-                //TODO
+        //Iterates through the ArrayLists in statistics.
+        for (ArrayList<Object> list : statistics) {
+            //Checks if the name of a Pokemon matches the pokemon parameter.
+            if (list.getFirst().equals(pokemon)) {
+                //Increases the win count by one.
+                Object originalWins = list.get(8);
+                int currentWins = ((int) originalWins) + 1;
+                list.set(8, currentWins + 1);
+
             }
-        }*/
+        }
     }
 
     /**
      * Increases the loss count (by one) in a Pokemon's ArrayList in statistics.
-     * Done by Jade Torres
+     * Applies to all Pokemon with the same name.
+     * Done by Jade Torres.
      *
      * @param pokemon, a String representing the Pokemon getting a loss.
      */
     public static void addLoss(String pokemon) {
-        //TODO
+        //Iterates through the ArrayLists in statistics.
+        for (ArrayList<Object> list : statistics) {
+            //Checks if the name of a Pokemon matches the pokemon parameter.
+            if (list.getFirst().equals(pokemon)) {
+                //Increases the win count by one.
+                Object originalLosses = list.get(9);
+                int currentLosses = ((int) originalLosses) + 1;
+                list.set(9, currentLosses + 1);
+            }
+        }
     }
 
     /**
