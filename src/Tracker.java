@@ -80,11 +80,10 @@ public class Tracker {
         //Iterates through the ArrayLists in statistics.
         for (ArrayList<Object> list : statistics) {
             //Checks if the name of a Pokemon matches the pokemon parameter.
-            if (list.getFirst().equals(pokemon)) {
+            if (list.get(1).equals(pokemon)) {
                 //Increases the win count by one.
-                Object originalWins = list.get(8);
-                int currentWins = ((int) originalWins) + 1;
-                list.set(8, currentWins + 1);
+                int wins = ((int) list.get(8)) + 1;
+                list.set(8, wins);
             }
         }
     }
@@ -100,20 +99,32 @@ public class Tracker {
         //Iterates through the ArrayLists in statistics.
         for (ArrayList<Object> list : statistics) {
             //Checks if the name of a Pokemon matches the pokemon parameter.
-            if (list.getFirst().equals(pokemon)) {
+            if (list.get(1).equals(pokemon)) {
                 //Increases the win count by one.
-                Object originalLosses = list.get(9);
-                int currentLosses = ((int) originalLosses) + 1;
-                list.set(9, currentLosses + 1);
+                int losses = ((int) list.get(9)) + 1;
+                list.set(9, losses);
             }
         }
     }
 
     /**
      * Prints the data stored in the statistics ArrayList.
+     * Done by Jade Torres.
      */
     public static void getAllPokemon() {
-        //TODO
+        for (ArrayList<Object> list : statistics) {
+            System.out.println("\n********************\n");
+            System.out.println("Team Number: " + list.getFirst());
+            System.out.println("Pokemon: " + list.get(1));
+            System.out.println("HP: " + list.get(2));
+            System.out.println("Attack: " + list.get(3));
+            System.out.println("Type: " + list.get(4));
+            System.out.println("Second Type: " + list.get(5));
+            System.out.println("Move: " + list.get(6));
+            System.out.println("Item: " + list.get(7));
+            System.out.println("Wins: " + list.get(8));
+            System.out.println("Losses: " + list.get(9));
+        }
     }
 
     /**
