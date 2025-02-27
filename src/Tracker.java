@@ -77,11 +77,11 @@ public class Tracker {
      */
     public static void addWin(String pokemon) {
         //WIP
-        for (ArrayList pokemon : statistics) {
-            if (pokemon.getFirst().equals(pokemon)) {
+        /*for (ArrayList pokemon : statistics) {
+            if (pokemon.getFirst().equals(test)) {
                 //TODO
             }
-        }
+        }*/
     }
 
     /**
@@ -96,39 +96,141 @@ public class Tracker {
 
     /**
      * Prints the data stored in the statistics ArrayList.
+     * Loops through the arraylist and print the elements
+     * Done by Jordan Tran
      */
     public static void getAllPokemon() {
-        //TODO
+        for(int i = 0; i < statistics.size(); i++){
+            System.out.println(statistics.get(i));
+        }
     }
 
     /**
      * Prints the names/Attacks of the top 3 Pokemon with the highest Attack.
+     * Essentially same as getTopHp function, read JavaDoc comments for that.
+     * But basically, put all ATK in an array, sort array from highest to lowest, and find those 3 Pokemon.
+     * Done by Jordan Tran
      */
     public static void getTopAttack () {
-        //TODO
+        if(statistics.size() < 3){
+            System.out.println("There are less than 3 Pokemon in the Database!");
+            return; // boots out of the method if there aren't 3 Pokemon minimum
+        }
+
+        ArrayList<int[]> atkList = new ArrayList<int[]>(); // arraylist of arrays to store attack values and index numbers
+
+        for(int pokemon = 0; pokemon < statistics.size(); pokemon++){
+            int atk = (int)((statistics.get(pokemon)).get(3)); // cast to an int, since technically an object
+            int[] toAdd = {atk,pokemon};
+            atkList.add(toAdd); // add array to arraylist
+        }
+
+        // sort the arraylist through a simple bubble sort
+        for (int i = 0; i < atkList.size(); i++) {
+            for (int j = 0; j < atkList.size() - 1 - i; j++) {
+                // compares the hps of the first element and the one directly after
+                if (atkList.get(j)[0] > atkList.get(j + 1)[0]) {
+                    // swaps the numbers if one is greater than the other
+                    int[] temp = atkList.get(j);
+                    atkList.set(j, atkList.get(j + 1)); // set element in position j to larger hp value
+                    atkList.set(j + 1, temp);
+                }
+            }
+        }
+
+        String highestAtk = (statistics.get((atkList.get(0))[1]).get(1)).toString(); // get the name of the Pokemon in statistics with the highest ATK
+        String secondHighest = (statistics.get((atkList.get(1))[1]).get(1)).toString();
+        String thirdHighest = (statistics.get((atkList.get(2))[1]).get(1)).toString(); // pulls index number from atkList, gets the name from that index, then turns that to a string.
+
+        System.out.println("The Pokemon with the highest ATK are: " + highestAtk + ", " + secondHighest + ", " + thirdHighest);
     }
 
     /**
      * Prints the names/HPs of the top 3 Pokemon with the highest HP.
+     * Done by storing all HP values along with index number in an arraylist of arrays
+     * Next the arraylist will be sorted from largest to smallest
+     * Finally, print the Pokemon whose index numbers match the top 3.
+     * Done by Jordan tran
      */
     public static void getTopHP () {
-        //TODO
+        if(statistics.size() < 3){
+            System.out.println("There are less than 3 Pokemon in the Database!");
+            return; // boots out of the method if there aren't 3 Pokemon minimum
+        }
+
+        ArrayList<int[]> hpList = new ArrayList<int[]>(); // arraylist of arrays to store hp values and index numbers
+
+        for(int pokemon = 0; pokemon < statistics.size(); pokemon++){
+            int hp = (int)((statistics.get(pokemon)).get(2)); // cast to an int, since technically an object
+            int[] toAdd = {hp,pokemon};
+            hpList.add(toAdd); // add array to arraylist
+        }
+
+        // sort the arraylist through a simple bubble sort
+        for (int i = 0; i < hpList.size(); i++) {
+            for (int j = 0; j < hpList.size() - 1 - i; j++) {
+                // compares the hps of the first element and the one directly after
+                if (hpList.get(j)[0] > hpList.get(j + 1)[0]) {
+                    // swaps the numbers if one is greater than the other
+                    int[] temp = hpList.get(j);
+                    hpList.set(j, hpList.get(j + 1)); // set element in position j to larger hp value
+                    hpList.set(j + 1, temp);
+                }
+            }
+        }
+
+        String highestHp = (statistics.get((hpList.get(0))[1]).get(1)).toString(); // get the name of the Pokemon in statistics with the highest hp
+        String secondHighest = (statistics.get((hpList.get(1))[1]).get(1)).toString();
+        String thirdHighest = (statistics.get((hpList.get(2))[1]).get(1)).toString(); // pulls index number from hplist, gets the name from that index, then turns that to a string.
+
+        System.out.println("The Pokemon with the highest HP are: " + highestHp + ", " + secondHighest + ", " + thirdHighest);
     }
+
+
 
     /**
      * Prints the average Attack of very Pokemon in statistics.
+     * Track all attack statistics in an integer and then divide by number of pokemon
+     * Done by Jordan Tran
      */
     public static void getAverageAttack () {
-        //TODO
+        int track = 0; // tracker variable
+        int toDivide = 0;
+        for(int pokemon = 0; pokemon < statistics.size(); pokemon++){
+            int num = (int)((statistics.get(pokemon)).get(3)); // cast to an int, since technically an object
+            track += num; // add to track
+            toDivide += 1; // for division at the end
+        }
+
+        System.out.println("The average attack points of all Pokemon is: " + (track/toDivide) + "ATK."); // print average
     }
 
     /**
      * Prints every Pokemon with the same type in the statistics ArrayList.
-     *
+     * For every element in every arraylist in statistics, check for the specified type
+     * If it matches the type, adds the name to a new arraylist to return
+     * Since we have an object arraylist we have to turn every element we want to compare into a string
      * @param type, a String representing the type to search for.
+     * Done by Jordan Tran
      */
     public static void getAllType (String type) {
-        //TODO
+        ArrayList<String> matchingPokemon = new ArrayList<String>();
+        String temp = type.toLowerCase(); // lowercase version of the string parameter for checks
+
+        for(int pokeNumber = 0; pokeNumber < statistics.size(); pokeNumber++){ //loops through the list
+            String pokemon = ((statistics.get(pokeNumber)).get(1)).toString();
+            String pokeType = ((statistics.get(pokeNumber)).get(4)).toString(); // we can do hard numbers here as all pokemon entries follow the same structure
+            String secondaryType = ((statistics.get(pokeNumber)).get(5)).toString();
+            // do these operations here as it would get convoluted in an if statement.
+            if(temp.equals(pokeType.toLowerCase()) || temp.equals(secondaryType.toLowerCase())){
+                matchingPokemon.add(pokemon); //compare lowercase of temp to primary and secondary types
+            }
+        }
+
+        System.out.println("Found these Pokemon with " + type + " as a primary or secondary typing:\n");
+        for(int i = 0; i < matchingPokemon.size(); i++){
+            System.out.println(matchingPokemon.get(i)); // print all matching pokemon
+        }
     }
 
     /**
@@ -194,7 +296,7 @@ public class Tracker {
                 String name = scan.nextLine();
                 System.out.println("Enter the Pokemon's HP:");
                 int hp = scan.nextInt();
-                System.out.println("Enter the Pokemon's Attack:");
+                System.out.println("Enter the Pokemon's Attack Value:");
                 int attack = scan.nextInt();
 
                 //"Fake" input to parse out the extra \n when the user presses enter.
