@@ -274,7 +274,7 @@ public class Tracker {
      *
      * @param type, a String representing the type to search for.
      */
-    public static void getAllType(String type) {
+    public static String getAllType(String type) {
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
             ArrayList<String> matchingPokemon = new ArrayList<String>();
@@ -290,13 +290,15 @@ public class Tracker {
                 }
             }
 
-            System.out.println("\nPokemon with " + type + " as a primary or secondary type:");
+            String toReturn = ("\nPokemon with " + type + " as a primary or secondary type:\n");
             for(int i = 0; i < matchingPokemon.size(); i++){
-                System.out.println(matchingPokemon.get(i)); // print all matching pokemon
+                toReturn = toReturn.concat(matchingPokemon.get(i) + "\n"); // concatenate pokemon and a new line to the return string
             }
+
+            return toReturn;
         }
         else {
-            System.out.println("\nThere are no Pokemon in the Database!");
+            return ("\nThere are no Pokemon in the Database!");
         }
     }
 
@@ -441,7 +443,7 @@ public class Tracker {
                 System.out.println("\nEnter the type:");
                 String type = scan.nextLine();
 
-                getAllType(type);
+                System.out.println(getAllType(type));
             }
             else {
                 System.out.println("\nNot a valid option.");
