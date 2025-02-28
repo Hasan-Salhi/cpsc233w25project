@@ -7,7 +7,7 @@ import java.util.Arrays;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.3 - February 25, 2025
+ * @version 1.4 - February 27, 2025
  */
 public class Tracker {
     private static ArrayList<Integer> teams = new ArrayList<>();
@@ -50,23 +50,39 @@ public class Tracker {
     /**
      * Adds a new move to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting moves in the same index.
+     * Done by Hasan Salhi.
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param move, a String representing the Pokemon's move.
      */
     public static void addMove(String pokemon, String move) {
-        //TODO
+        //*****yo remove this comment later but i added some code for you so i dont forget*****
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            //TODO INSIDE HERE
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
+        }
     }
 
     /**
      * Adds a new item to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting items in the same index.
+     * Done by Hasan Salhi.
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param item, a String representing the Pokemon's item.
      */
     public static void addItem(String pokemon, String item) {
-        //TODO
+        //*****yo remove this comment later but i added some code for you so i dont forget*****
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            //TODO INSIDE HERE
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
+        }
     }
 
     /**
@@ -77,14 +93,20 @@ public class Tracker {
      * @param pokemon, a String representing the Pokemon getting a win.
      */
     public static void addWin(String pokemon) {
-        //Iterates through the ArrayLists in statistics.
-        for (ArrayList<Object> list : statistics) {
-            //Checks if the name of a Pokemon matches the pokemon parameter.
-            if (list.get(1).equals(pokemon)) {
-                //Increases the win count by one.
-                int wins = ((int) list.get(8)) + 1;
-                list.set(8, wins);
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            //Iterates through the ArrayLists in statistics.
+            for (ArrayList<Object> list : statistics) {
+                //Checks if the name of a Pokemon matches the pokemon parameter.
+                if (list.get(1).equals(pokemon)) {
+                    //Increases the win count by one.
+                    int wins = ((int) list.get(8)) + 1;
+                    list.set(8, wins);
+                }
             }
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
         }
     }
 
@@ -96,14 +118,20 @@ public class Tracker {
      * @param pokemon, a String representing the Pokemon getting a loss.
      */
     public static void addLoss(String pokemon) {
-        //Iterates through the ArrayLists in statistics.
-        for (ArrayList<Object> list : statistics) {
-            //Checks if the name of a Pokemon matches the pokemon parameter.
-            if (list.get(1).equals(pokemon)) {
-                //Increases the win count by one.
-                int losses = ((int) list.get(9)) + 1;
-                list.set(9, losses);
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            //Iterates through the ArrayLists in statistics.
+            for (ArrayList<Object> list : statistics) {
+                //Checks if the name of a Pokemon matches the pokemon parameter.
+                if (list.get(1).equals(pokemon)) {
+                    //Increases the win count by one.
+                    int losses = ((int) list.get(9)) + 1;
+                    list.set(9, losses);
+                }
             }
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
         }
     }
 
@@ -112,30 +140,36 @@ public class Tracker {
      * Done by Jade Torres.
      */
     public static void getAllPokemon() {
-        for (ArrayList<Object> list : statistics) {
-            System.out.println("\n********************\n");
-            System.out.println("Team Number: " + list.getFirst());
-            System.out.println("Pokemon: " + list.get(1));
-            System.out.println("HP: " + list.get(2));
-            System.out.println("Attack: " + list.get(3));
-            System.out.println("Type: " + list.get(4));
-            System.out.println("Second Type: " + list.get(5));
-            System.out.println("Move: " + list.get(6));
-            System.out.println("Item: " + list.get(7));
-            System.out.println("Wins: " + list.get(8));
-            System.out.println("Losses: " + list.get(9));
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            for (ArrayList<Object> list : statistics) {
+                System.out.println("\n********************\n");
+                System.out.println("Team Number: " + list.getFirst());
+                System.out.println("Pokemon: " + list.get(1));
+                System.out.println("HP: " + list.get(2));
+                System.out.println("Attack: " + list.get(3));
+                System.out.println("Type: " + list.get(4));
+                System.out.println("Second Type: " + list.get(5));
+                System.out.println("Move: " + list.get(6));
+                System.out.println("Item: " + list.get(7));
+                System.out.println("Wins: " + list.get(8));
+                System.out.println("Losses: " + list.get(9));
+            }
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
         }
     }
 
     /**
      * Prints the names/Attacks of the top 3 Pokemon with the highest Attack.
-     * Essentially same as getTopHp function, read JavaDoc comments for that.
+     * Essentially same as getTopHP function, read JavaDoc comments for that.
      * But basically, put all ATK in an array, sort array from highest to lowest, and find those 3 Pokemon.
-     * Done by Jordan Tran
+     * Done by Jordan Tran.
      */
-    public static void getTopAttack () {
+    public static void getTopAttack() {
         if(statistics.size() < 3){
-            System.out.println("There are less than 3 Pokemon in the Database!");
+            System.out.println("\nThere are less than 3 Pokemon in the Database!");
             return; // boots out of the method if there aren't 3 Pokemon minimum
         }
 
@@ -164,19 +198,19 @@ public class Tracker {
         String secondHighest = (statistics.get((atkList.get(1))[1]).get(1)).toString();
         String thirdHighest = (statistics.get((atkList.get(2))[1]).get(1)).toString(); // pulls index number from atkList, gets the name from that index, then turns that to a string.
 
-        System.out.println("The Pokemon with the highest ATK are: " + highestAtk + ", " + secondHighest + ", " + thirdHighest);
+        System.out.println("\nThe Pokemon with the highest Attack are: " + highestAtk + ", " + secondHighest + ", " + thirdHighest);
     }
 
     /**
      * Prints the names/HPs of the top 3 Pokemon with the highest HP.
-     * Done by storing all HP values along with index number in an arraylist of arrays
-     * Next the arraylist will be sorted from largest to smallest
+     * Done by storing all HP values along with index number in an arraylist of arrays.
+     * Next the arraylist will be sorted from largest to smallest.
      * Finally, print the Pokemon whose index numbers match the top 3.
-     * Done by Jordan tran
+     * Done by Jordan Tran.
      */
-    public static void getTopHP () {
+    public static void getTopHP() {
         if(statistics.size() < 3){
-            System.out.println("There are less than 3 Pokemon in the Database!");
+            System.out.println("\nThere are less than 3 Pokemon in the Database!");
             return; // boots out of the method if there aren't 3 Pokemon minimum
         }
 
@@ -205,53 +239,64 @@ public class Tracker {
         String secondHighest = (statistics.get((hpList.get(1))[1]).get(1)).toString();
         String thirdHighest = (statistics.get((hpList.get(2))[1]).get(1)).toString(); // pulls index number from hplist, gets the name from that index, then turns that to a string.
 
-        System.out.println("The Pokemon with the highest HP are: " + highestHp + ", " + secondHighest + ", " + thirdHighest);
+        System.out.println("\nThe Pokemon with the highest HP are: " + highestHp + ", " + secondHighest + ", " + thirdHighest);
     }
-
-
 
     /**
      * Prints the average Attack of very Pokemon in statistics.
-     * Track all attack statistics in an integer and then divide by number of pokemon
-     * Done by Jordan Tran
+     * Track all attack statistics in an integer and then divide by number of Pokemon.
+     * Done by Jordan Tran.
      */
-    public static void getAverageAttack () {
-        int track = 0; // tracker variable
-        int toDivide = 0;
-        for(int pokemon = 0; pokemon < statistics.size(); pokemon++){
-            int num = (int)((statistics.get(pokemon)).get(3)); // cast to an int, since technically an object
-            track += num; // add to track
-            toDivide += 1; // for division at the end
-        }
+    public static void getAverageAttack() {
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            int track = 0; // tracker variable
+            int toDivide = 0;
+            for(int pokemon = 0; pokemon < statistics.size(); pokemon++){
+                int num = (int)((statistics.get(pokemon)).get(3)); // cast to an int, since technically an object
+                track += num; // add to track
+                toDivide += 1; // for division at the end
+            }
 
-        System.out.println("The average attack points of all Pokemon is: " + (track/toDivide) + "ATK."); // print average
+            System.out.println("\nThe average Attack value of all Pokemon is: " + (track/toDivide) + " Attack."); // print average
+        }
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
+        }
     }
 
     /**
      * Prints every Pokemon with the same type in the statistics ArrayList.
-     * For every element in every arraylist in statistics, check for the specified type
-     * If it matches the type, adds the name to a new arraylist to return
-     * Since we have an object arraylist we have to turn every element we want to compare into a string
+     * For every element in every arraylist in statistics, check for the specified type.
+     * If it matches the type, adds the name to a new arraylist to return.
+     * Since we have an object arraylist we have to turn every element we want to compare into a string.
+     * Done by Jordan Tran.
+     *
      * @param type, a String representing the type to search for.
-     * Done by Jordan Tran
      */
-    public static void getAllType (String type) {
-        ArrayList<String> matchingPokemon = new ArrayList<String>();
-        String temp = type.toLowerCase(); // lowercase version of the string parameter for checks
+    public static void getAllType(String type) {
+        //Checks if there are Pokemon in statistics.
+        if (!statistics.isEmpty()) {
+            ArrayList<String> matchingPokemon = new ArrayList<String>();
+            String temp = type.toLowerCase(); // lowercase version of the string parameter for checks
 
-        for(int pokeNumber = 0; pokeNumber < statistics.size(); pokeNumber++){ //loops through the list
-            String pokemon = ((statistics.get(pokeNumber)).get(1)).toString();
-            String pokeType = ((statistics.get(pokeNumber)).get(4)).toString(); // we can do hard numbers here as all pokemon entries follow the same structure
-            String secondaryType = ((statistics.get(pokeNumber)).get(5)).toString();
-            // do these operations here as it would get convoluted in an if statement.
-            if(temp.equals(pokeType.toLowerCase()) || temp.equals(secondaryType.toLowerCase())){
-                matchingPokemon.add(pokemon); //compare lowercase of temp to primary and secondary types
+            for(int pokeNumber = 0; pokeNumber < statistics.size(); pokeNumber++){ //loops through the list
+                String pokemon = ((statistics.get(pokeNumber)).get(1)).toString();
+                String pokeType = ((statistics.get(pokeNumber)).get(4)).toString(); // we can do hard numbers here as all pokemon entries follow the same structure
+                String secondaryType = ((statistics.get(pokeNumber)).get(5)).toString();
+                // do these operations here as it would get convoluted in an if statement.
+                if(temp.equals(pokeType.toLowerCase()) || temp.equals(secondaryType.toLowerCase())){
+                    matchingPokemon.add(pokemon); //compare lowercase of temp to primary and secondary types
+                }
+            }
+
+            System.out.println("\nPokemon with " + type + " as a primary or secondary type:");
+            for(int i = 0; i < matchingPokemon.size(); i++){
+                System.out.println(matchingPokemon.get(i)); // print all matching pokemon
             }
         }
-
-        System.out.println("Found these Pokemon with " + type + " as a primary or secondary typing:\n");
-        for(int i = 0; i < matchingPokemon.size(); i++){
-            System.out.println(matchingPokemon.get(i)); // print all matching pokemon
+        else {
+            System.out.println("\nThere are no Pokemon in the Database!");
         }
     }
 
@@ -306,30 +351,36 @@ public class Tracker {
             else if (option == 1) {
                 addTeam();
             }
-            //Assumes the input for team and hp are valid integers.
+            //Assumes the input for team, hp, and attack are integers.
             else if (option == 2) {
                 System.out.println("\nEnter the Pokemon's team number:");
                 int team = scan.nextInt();
 
-                //"Fake" input to parse out the extra \n when the user presses enter.
-                scan.nextLine();
+                //Checks if input is a valid team number.
+                if (!teams.contains(team)) {
+                    System.out.println("\nNot a valid option.");
+                }
+                else {
+                    //"Fake" input to parse out the extra \n when the user presses enter.
+                    scan.nextLine();
 
-                System.out.println("Enter the Pokemon's name:");
-                String name = scan.nextLine();
-                System.out.println("Enter the Pokemon's HP:");
-                int hp = scan.nextInt();
-                System.out.println("Enter the Pokemon's Attack value:");
-                int attack = scan.nextInt();
+                    System.out.println("Enter the Pokemon's name:");
+                    String name = scan.nextLine();
+                    System.out.println("Enter the Pokemon's HP:");
+                    int hp = scan.nextInt();
+                    System.out.println("Enter the Pokemon's Attack value:");
+                    int attack = scan.nextInt();
 
-                //"Fake" input to parse out the extra \n when the user presses enter.
-                scan.nextLine();
+                    //"Fake" input to parse out the extra \n when the user presses enter.
+                    scan.nextLine();
 
-                System.out.println("Enter the Pokemon's type:");
-                String typeOne = scan.nextLine();
-                System.out.println("Enter the Pokemon's second type (if not applicable, enter \"none\"):");
-                String typeTwo = scan.nextLine();
+                    System.out.println("Enter the Pokemon's type:");
+                    String typeOne = scan.nextLine();
+                    System.out.println("Enter the Pokemon's second type (if not applicable, enter \"none\"):");
+                    String typeTwo = scan.nextLine();
 
-                addPokemon(team, name, hp, attack, typeOne, typeTwo);
+                    addPokemon(team, name, hp, attack, typeOne, typeTwo);
+                }
             }
             else if (option == 3) {
                 //"Fake" input to parse out the extra \n when the user presses enter.
