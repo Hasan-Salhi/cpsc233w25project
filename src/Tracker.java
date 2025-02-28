@@ -14,11 +14,9 @@ public class Tracker {
     private static ArrayList<ArrayList<Object>> statistics = new ArrayList<>();
 
     /**
-     * Adds a new team number to the teams ArrayList.
-     * Done by Hasan Salhi.
+     * Adds a new team number to the teams ArrayList
      */
     public static void addTeam() {
-        //WIP
         int teamNumber = teams.size() + 1;
         teams.add(teamNumber);
     }
@@ -30,8 +28,7 @@ public class Tracker {
      * Two empty Strings are added for holding a move and item
      * (elements 6 and 7).
      * Two ints (set to zero) are added for holding the Pokemon's
-     * wins and losses (elements 8 and 9).
-     * Done by Hasan Salhi.
+     * wins and losses (elements 8 and 9)
      *
      * @param team, an int representing the Pokemon's team number.
      * @param name, a String representing the Pokemon's name.
@@ -50,16 +47,20 @@ public class Tracker {
     /**
      * Adds a new move to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting moves in the same index.
-     * Done by Hasan Salhi.
+     * Done by Hasan Salhi
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param move, a String representing the Pokemon's move.
      */
     public static void addMove(String pokemon, String move) {
-        //*****yo remove this comment later but i added some code for you so i dont forget*****
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
-            //TODO INSIDE HERE
+            for (ArrayList<Object> aPokemon : statistics) {
+                //Checks every arrayList in statistics for the corresponding pokemon
+                if (aPokemon.get(1).equals(pokemon)) {
+                    aPokemon.set(6,move);
+                }
+            }
         }
         else {
             System.out.println("\nThere are no Pokemon in the Database!");
@@ -69,16 +70,21 @@ public class Tracker {
     /**
      * Adds a new item to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting items in the same index.
-     * Done by Hasan Salhi.
+     * Done by Hasan Salhi
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param item, a String representing the Pokemon's item.
      */
     public static void addItem(String pokemon, String item) {
-        //*****yo remove this comment later but i added some code for you so i dont forget*****
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
-            //TODO INSIDE HERE
+            for (ArrayList<Object> aPokemon : statistics) {
+                //Checks every arrayList in statistics for the corresponding pokemon
+                if (aPokemon.get(1).equals(pokemon)) {
+                    aPokemon.set(7,item);
+                }
+            }
+
         }
         else {
             System.out.println("\nThere are no Pokemon in the Database!");
