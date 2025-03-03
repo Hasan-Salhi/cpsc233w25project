@@ -175,8 +175,21 @@ public class TrackerTest extends Tracker {
     void testGetTopHP() {
     }
 
+    /**
+     * Testing getAverageAttack
+     * Done by Jordan Tran
+     */
     @Test
     void testGetAverageAttack() {
+        Tracker.addTeam();
+        Tracker.addPokemon(1, "good",0,50,"normal","none"); //normal primary
+        Tracker.addPokemon(1, "good2",0,70,"none","normal"); // normal secondary
+        Tracker.addPokemon(1, "good3",0,100,"Normal","none"); // normal (capital edition)
+        Tracker.addPokemon(1, "invalid",0,20,"Fighting","Steel"); // non-normal type
+        // copied from getAllType test, but with changed attack.
+        String testString = ("\nPokemon with normal as a primary or secondary type:\ngood\ngood2\ngood3\n");
+        String actual = Tracker.getAllType("normal");
+        assertEquals(testString, actual);
     }
 
     /**
@@ -185,18 +198,15 @@ public class TrackerTest extends Tracker {
      * Done by Jordan Tran.
      */
     @Test
-    public void testGetAllType(){
+     void testGetAllType(){
         Tracker.addTeam();
-        ArrayList<Object> valid1 = new ArrayList<>(Arrays.asList(1,"good",0,0,"normal","none","","",0,0)); //making test pokemon
-        ArrayList<Object> valid2 = new ArrayList<>(Arrays.asList(1,"good2",0,0,"none","normal","","",0,0)); //normal as secondary typing
-        ArrayList<Object> valid3 = new ArrayList<>(Arrays.asList(1,"good3",0,0,"Normal","none","","",0,0)); //normal (capital edition)
-        ArrayList<Object> invalid1 = new ArrayList<>(Arrays.asList(1,"invalid",0,0,"Fighting","Steel","","",0,0)); //NOT a normal type
-        statistics.add(valid1);
-        statistics.add(valid2);
-        statistics.add(valid3);
-        statistics.add(invalid1);
+        Tracker.addPokemon(1, "good",0,0,"normal","none"); //normal primary
+        Tracker.addPokemon(1, "good2",0,0,"none","normal"); // normal secondary
+        Tracker.addPokemon(1, "good3",0,0,"Normal","none"); // normal (capital edition)
+        Tracker.addPokemon(1, "invalid",0,0,"Fighting","Steel"); // non-normal type
 
         String testString = ("\nPokemon with normal as a primary or secondary type:\ngood\ngood2\ngood3\n");
-        assertEquals(testString, Tracker.getAllType("normal"));
+        String actual = Tracker.getAllType("normal");
+        assertEquals(testString, actual);
     }
 }
