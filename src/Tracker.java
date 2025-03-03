@@ -7,14 +7,15 @@ import java.util.Arrays;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.4 - February 27, 2025
+ * @version 1.6 - March 3, 2025
  */
 public class Tracker {
     private static ArrayList<Integer> teams = new ArrayList<>();
     private static ArrayList<ArrayList<Object>> statistics = new ArrayList<>();
 
     /**
-     * Adds a new team number to the teams ArrayList
+     * Adds a new team number to the teams ArrayList.
+     * Done by Hasan Salhi.
      */
     public static void addTeam() {
         int teamNumber = teams.size() + 1;
@@ -28,7 +29,8 @@ public class Tracker {
      * Two empty Strings are added for holding a move and item
      * (elements 6 and 7).
      * Two ints (set to zero) are added for holding the Pokemon's
-     * wins and losses (elements 8 and 9)
+     * wins and losses (elements 8 and 9).
+     * Done by Hasan Salhi.
      *
      * @param team, an int representing the Pokemon's team number.
      * @param name, a String representing the Pokemon's name.
@@ -46,7 +48,7 @@ public class Tracker {
     /**
      * Adds a new move to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting moves in the same index.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param move, a String representing the Pokemon's move.
@@ -69,7 +71,7 @@ public class Tracker {
     /**
      * Adds a new item to a Pokemon's ArrayList in statistics.
      * Replaces any preexisting items in the same index.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param pokemon, a String representing the Pokemon getting a new move.
      * @param item, a String representing the Pokemon's item.
