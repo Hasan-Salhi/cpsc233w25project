@@ -143,30 +143,30 @@ public class Tracker {
     }
 
     /**
-     * Prints the data stored in the statistics ArrayList.
+     * Returns the data stored in the statistics ArrayList.
      * Done by Jade Torres.
      *
-     * @return
+     * @return a String representation of the data stored
      */
     public static String getAllPokemon() {
-        String data = "";
+        StringBuilder data = new StringBuilder();
 
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
             for (ArrayList<Object> list : statistics) {
-                data += "\n********************\n";
-                data += "\nTeam Number: " + list.getFirst();
-                data += "\nPokemon: " + list.get(1);
-                data += "\nHP: " + list.get(2);
-                data += "\nAttack: " + list.get(3);
-                data += "\nType: " + list.get(4);
-                data += "\nSecond Type: " + list.get(5);
-                data += "\nMove: " + list.get(6);
-                data += "\nItem: " + list.get(7);
-                data += "\nWins: " + list.get(8);
-                data += "\nLosses: " + list.get(9) + "\n";
+                data.append("\n********************\n");
+                data.append("\nTeam Number: ").append(list.getFirst());
+                data.append("\nPokemon: ").append(list.get(1));
+                data.append("\nHP: ").append(list.get(2));
+                data.append("\nAttack: ").append(list.get(3));
+                data.append("\nType: ").append(list.get(4));
+                data.append("\nSecond Type: ").append(list.get(5));
+                data.append("\nMove: ").append(list.get(6));
+                data.append("\nItem: ").append(list.get(7));
+                data.append("\nWins: ").append(list.get(8));
+                data.append("\nLosses: ").append(list.get(9)).append("\n");
             }
-            return data.stripTrailing();
+            return data.toString().stripTrailing();
         }
         else {
             return "\nThere are no Pokemon in the Database!";
@@ -278,7 +278,7 @@ public class Tracker {
     }
 
     /**
-     * Prints every Pokemon with the same type in the statistics ArrayList.
+     * Returns every Pokemon with the same type in the statistics ArrayList.
      * For every element in every arraylist in statistics, check for the specified type.
      * If it matches the type, adds the name to a new arraylist to return.
      * Since we have an object arraylist we have to turn every element we want to compare into a string.
