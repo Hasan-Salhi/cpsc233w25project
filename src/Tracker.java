@@ -39,7 +39,6 @@ public class Tracker {
      *                 "none" if not applicable.
      */
     public static void addPokemon(int team, String name, int hp, int attack, String typeOne, String typeTwo) {
-        //WIP
         ArrayList<Object> pokemon = new ArrayList<>(Arrays.asList(team,name,hp,attack,typeOne,typeTwo,"","",0,0));
         statistics.add(pokemon);
     }
@@ -144,26 +143,31 @@ public class Tracker {
     /**
      * Prints the data stored in the statistics ArrayList.
      * Done by Jade Torres.
+     *
+     * @return
      */
-    public static void getAllPokemon() {
+    public static String getAllPokemon() {
+        String data = "";
+
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
             for (ArrayList<Object> list : statistics) {
-                System.out.println("\n********************\n");
-                System.out.println("Team Number: " + list.getFirst());
-                System.out.println("Pokemon: " + list.get(1));
-                System.out.println("HP: " + list.get(2));
-                System.out.println("Attack: " + list.get(3));
-                System.out.println("Type: " + list.get(4));
-                System.out.println("Second Type: " + list.get(5));
-                System.out.println("Move: " + list.get(6));
-                System.out.println("Item: " + list.get(7));
-                System.out.println("Wins: " + list.get(8));
-                System.out.println("Losses: " + list.get(9));
+                data += "\n********************\n";
+                data += "\nTeam Number: " + list.getFirst();
+                data += "\nPokemon: " + list.get(1);
+                data += "\nHP: " + list.get(2);
+                data += "\nAttack: " + list.get(3);
+                data += "\nType: " + list.get(4);
+                data += "\nSecond Type: " + list.get(5);
+                data += "\nMove: " + list.get(6);
+                data += "\nItem: " + list.get(7);
+                data += "\nWins: " + list.get(8);
+                data += "\nLosses: " + list.get(9) + "\n";
             }
+            return data.stripTrailing();
         }
         else {
-            System.out.println("\nThere are no Pokemon in the Database!");
+            return "\nThere are no Pokemon in the Database!";
         }
     }
 
@@ -431,7 +435,7 @@ public class Tracker {
                 addLoss(pokemon);
             }
             else if (option == 7) {
-                getAllPokemon();
+                System.out.println(getAllPokemon());
             }
             else if (option == 8) {
                 getTopAttack();
