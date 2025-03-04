@@ -179,10 +179,9 @@ public class Tracker {
      * But basically, put all ATK in an array, sort array from highest to lowest, and find those 3 Pokemon.
      * Done by Jordan Tran.
      */
-    public static void getTopAttack() {
+    public static String getTopAttack() {
         if(statistics.size() < 3){
-            System.out.println("\nThere are less than 3 Pokemon in the Database!");
-            return; // boots out of the method if there aren't 3 Pokemon minimum
+            return ("\nThere are less than 3 Pokemon in the Database!"); // boots out of the method if there aren't 3 Pokemon minimum
         }
 
         ArrayList<int[]> atkList = new ArrayList<int[]>(); // arraylist of arrays to store attack values and index numbers
@@ -194,23 +193,13 @@ public class Tracker {
         }
 
         // sort the arraylist through a simple bubble sort
-        for (int i = 0; i < atkList.size(); i++) {
-            for (int j = 0; j < atkList.size() - 1 - i; j++) {
-                // compares the hps of the first element and the one directly after
-                if (atkList.get(j)[0] > atkList.get(j + 1)[0]) {
-                    // swaps the numbers if one is greater than the other
-                    int[] temp = atkList.get(j);
-                    atkList.set(j, atkList.get(j + 1)); // set element in position j to larger hp value
-                    atkList.set(j + 1, temp);
-                }
-            }
-        }
+        atkList = bubbleSort(atkList, atkList.size());
 
         String highestAtk = (statistics.get((atkList.get(0))[1]).get(1)).toString(); // get the name of the Pokemon in statistics with the highest ATK
         String secondHighest = (statistics.get((atkList.get(1))[1]).get(1)).toString();
         String thirdHighest = (statistics.get((atkList.get(2))[1]).get(1)).toString(); // pulls index number from atkList, gets the name from that index, then turns that to a string.
 
-        System.out.println("\nThe Pokemon with the highest Attack are: " + highestAtk + ", " + secondHighest + ", " + thirdHighest);
+        return("\nThe Pokemon with the highest Attack are: " + highestAtk + ", " + secondHighest + ", " + thirdHighest);
     }
 
     /**
@@ -220,10 +209,9 @@ public class Tracker {
      * Finally, print the Pokemon whose index numbers match the top 3.
      * Done by Jordan Tran.
      */
-    public static void getTopHP() {
+    public static String getTopHP() {
         if(statistics.size() < 3){
-            System.out.println("\nThere are less than 3 Pokemon in the Database!");
-            return; // boots out of the method if there aren't 3 Pokemon minimum
+            return("\nThere are less than 3 Pokemon in the Database!"); // boots out of the method if there aren't 3 Pokemon minimum
         }
 
         ArrayList<int[]> hpList = new ArrayList<int[]>(); // arraylist of arrays to store hp values and index numbers
@@ -235,31 +223,56 @@ public class Tracker {
         }
 
         // sort the arraylist through a simple bubble sort
-        for (int i = 0; i < hpList.size(); i++) {
-            for (int j = 0; j < hpList.size() - 1 - i; j++) {
-                // compares the hps of the first element and the one directly after
-                if (hpList.get(j)[0] > hpList.get(j + 1)[0]) {
-                    // swaps the numbers if one is greater than the other
-                    int[] temp = hpList.get(j);
-                    hpList.set(j, hpList.get(j + 1)); // set element in position j to larger hp value
-                    hpList.set(j + 1, temp);
-                }
-            }
-        }
+        hpList = bubbleSort(hpList,hpList.size());
 
         String highestHp = (statistics.get((hpList.get(0))[1]).get(1)).toString(); // get the name of the Pokemon in statistics with the highest hp
         String secondHighest = (statistics.get((hpList.get(1))[1]).get(1)).toString();
         String thirdHighest = (statistics.get((hpList.get(2))[1]).get(1)).toString(); // pulls index number from hplist, gets the name from that index, then turns that to a string.
 
-        System.out.println("\nThe Pokemon with the highest HP are: " + highestHp + ", " + secondHighest + ", " + thirdHighest);
+        return("\nThe Pokemon with the highest HP are: " + highestHp + ", " + secondHighest + ", " + thirdHighest);
     }
 
+    /**
+     * Bubble sort function for getTopHP and getTopAttack
+     * The Following Code is from
+     * https://www.geeksforgeeks.org/bubble-sort-algorithm/
+     * As my initial bubble sort code did not work as intended.
+     * @param arr Is the array to be sorted
+     * @param n Is the size of the array
+     * @return a 3 length int array
+     */
+    public static ArrayList<int[]> bubbleSort(ArrayList<int[]> arr, int n){
+        ArrayList<int[]> toReturn = new ArrayList<int[]>();
+        toReturn = arr;
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                int[] array1 = toReturn.get(j);
+                int[] array2 = toReturn.get(j + 1);
+
+                // Compare the first element of the arrays
+                if (array1[0] < array2[0] || (array1[0] == array2[0] && array1[1] < array2[1])) {
+                    // Swap the arrays
+                    toReturn.set(j, array2);
+                    toReturn.set(j + 1, array1);
+                    swapped = true;
+                }
+            }
+            // If no elements were swapped, the list is already sorted
+            if (!swapped) {
+                break;
+            }
+        }
+
+        return toReturn;
+    }
     /**
      * Prints the average Attack of very Pokemon in statistics.
      * Track all attack statistics in an integer and then divide by number of Pokemon.
      * Done by Jordan Tran.
      */
-    public static void getAverageAttack() {
+    public static String getAverageAttack() {
         //Checks if there are Pokemon in statistics.
         if (!statistics.isEmpty()) {
             int track = 0; // tracker variable
@@ -270,10 +283,10 @@ public class Tracker {
                 toDivide += 1; // for division at the end
             }
 
-            System.out.println("\nThe average Attack value of all Pokemon is: " + (track/toDivide) + " Attack."); // print average
+            return("\nThe average Attack value of all Pokemon is: " + (track/toDivide) + " Attack."); // print average
         }
         else {
-            System.out.println("\nThere are no Pokemon in the Database!");
+            return("\nThere are no Pokemon in the Database!");
         }
     }
 
@@ -440,13 +453,13 @@ public class Tracker {
                 System.out.println(getAllPokemon());
             }
             else if (option == 8) {
-                getTopAttack();
+                System.out.println(getTopAttack());
             }
             else if (option == 9) {
-                getTopHP();
+                System.out.println(getTopHP());
             }
             else if (option == 10) {
-                getAverageAttack();
+                System.out.println(getAverageAttack());
             }
             else if (option == 11) {
                 //"Fake" input to parse out the extra \n when the user presses enter.
