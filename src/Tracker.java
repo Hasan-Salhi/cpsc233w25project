@@ -23,6 +23,22 @@ public class Tracker {
     }
 
     /**
+     * Gets a String list of all teams.
+     * Done by Jade Torres.
+     *
+     * @return a String list of all teams.
+     */
+    public static String getTeams() {
+        StringBuilder teamList = new StringBuilder();
+
+        //Iterates through the ArrayList of teams.
+        for (Integer team : teams) {
+            teamList.append(team).append("\n");
+        }
+        return teamList.toString();
+    }
+
+    /**
      * Adds a new Pokemon to the statistics ArrayList.
      * Pokemon are represented by an ArrayList containing their
      * team, name, HP, attack, type, and second type.
