@@ -29,6 +29,8 @@ public class TrackerTest extends Tracker {
         Tracker.addTeam();
         ArrayList<Integer> actual = teams;
         assertEquals(expected,actual);
+
+        teams.clear();
     }
 
     @Test
@@ -49,6 +51,8 @@ public class TrackerTest extends Tracker {
         Tracker.addTeam();
         ArrayList<Integer> actual = teams;
         assertEquals(expected,actual);
+
+        teams.clear();
     }
 
     /**
@@ -67,6 +71,9 @@ public class TrackerTest extends Tracker {
         Tracker.addPokemon(1,"Ivysaur",1000,50,"","","","",0,0);
         ArrayList<ArrayList<Object>> actual = statistics;
         assertEquals(expected, actual);
+
+        teams.clear();
+        statistics.clear();
     }
 
     @Test
@@ -79,30 +86,79 @@ public class TrackerTest extends Tracker {
         }
 
         //Adds Pokemon to expected
-        ArrayList<Object> pokemon = new ArrayList<>(Arrays.asList(1,"Pikachu",1000,250,"","","","",0,0));
+        ArrayList<Object> pokemon = new ArrayList<>(Arrays.asList(1,"Pikachu",1000,250,"","",));
         expected.add(pokemon);
 
-        ArrayList<Object> pokemon1 = new ArrayList<>(Arrays.asList(2,"Charizard",2000,300,"","","","",0,0));
+        ArrayList<Object> pokemon1 = new ArrayList<>(Arrays.asList(2,"Charizard",2000,300,"",""));
         expected.add(pokemon);
 
-        ArrayList<Object> pokemon2 = new ArrayList<>(Arrays.asList(3,"Squirtle",1000,150,"","","","",0,0));
+        ArrayList<Object> pokemon2 = new ArrayList<>(Arrays.asList(3,"Squirtle",1000,150,"",""));
         expected.add(pokemon);
 
         //Adds Pokemon to teams
-        Tracker.addPokemon(1,"Pikachu",1000,250,"","","","",0,0);
-        Tracker.addPokemon(2,"Charizard",2000,300,"","","","",0,0);
-        Tracker.addPokemon(3,"Squirtle",1000,150,"","","","",0,0);
+        Tracker.addPokemon(1,"Pikachu",1000,250,"","");
+        Tracker.addPokemon(2,"Charizard",2000,300,"","");
+        Tracker.addPokemon(3,"Squirtle",1000,150,"","");
 
         ArrayList<ArrayList<Object>> actual = teams;
         assertEquals(expected,actual);
+
+        teams.clear();
+        statistics.clear();
     }
 
+    /**
+     * Testing addMove
+     * Done by Hasan Salhi
+     */
     @Test
     void testAddMove() {
+        teams.clear();
+        statistics.clear();
+
+        Tracker.addTeam();
+        Tracker.addPokemon(1,"Charmander",1250,175,"","");
+
+        //Copies expected value into new ArrayList to be able to compare it with actually using addMove()
+        statistics.get(0).add(6,"Move");
+        ArrayList<Object> expected = new ArrayList<>(Arrays.asList(1,"Charmander",1250,175,"","","Move","",0,0));
+
+        //Resets item index to test it with actual function
+        statistics.get(0).add(6,"");
+        Tracker.addMove("Charmander","Move");
+
+        ArrayList<Object> actual = statistics.get(0);
+        assertEquals(expected, actual);
+
+        teams.clear();
+        statistics.clear();
     }
 
+    /**
+     * Testing addItem
+     * Done by Hasan Salhi
+     */
     @Test
     void testAddItem() {
+        teams.clear();
+        statistics.clear();
+
+        Tracker.addTeam();
+        Tracker.addPokemon(1,"Charmander",1250,175,"","");
+
+        //Copies expected value into new ArrayList to be able to compare it with actually using addItem()
+        statistics.get(0).add(7,"Item");
+        ArrayList<Object> expected = new ArrayList<>(Arrays.asList(1,"Charmander",1250,175,"","","","Item",0,0));
+
+        //Resets item index to test it with actual function
+        statistics.get(0).add(7,"");
+        Tracker.addItem("Charmander","Item");
+
+        ArrayList<Object> actual = statistics.get(0);
+        assertEquals(expected, actual);
+
+        teams.clear();
+        statistics.clear();
     }
 
     /**
