@@ -241,12 +241,38 @@ public class TrackerTest extends Tracker {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testing getTopAttack
+     * Done by Jordan Tran
+     */
     @Test
     void testGetTopAttack() {
+        Tracker.addTeam();
+        Tracker.addPokemon(1, "good",83,50,"normal","none"); //normal primary
+        Tracker.addPokemon(1, "good2",100,70,"none","normal"); // normal secondary
+        Tracker.addPokemon(1, "good3",25,100,"Normal","none"); // normal (capital edition)
+        Tracker.addPokemon(1, "invalid",70,20,"Fighting","Steel"); // non-normal type
+        // copied from getTopHP.
+        String testString = "\nThe Pokemon with the highest Attack are: good3, good2, good";
+        String actual = Tracker.getTopAttack();
+        assertEquals(testString, actual);
     }
 
+    /**
+     * Testing getTopHP
+     * Done by Jordan Tran
+     */
     @Test
     void testGetTopHP() {
+        Tracker.addTeam();
+        Tracker.addPokemon(1, "good",83,50,"normal","none"); //normal primary
+        Tracker.addPokemon(1, "good2",100,70,"none","normal"); // normal secondary
+        Tracker.addPokemon(1, "good3",25,100,"Normal","none"); // normal (capital edition)
+        Tracker.addPokemon(1, "invalid",70,20,"Fighting","Steel"); // non-normal type
+        // copied from averageAttack test, but with changed hp.
+        String testString = "\nThe Pokemon with the highest HP are: good2, good, invalid";
+        String actual = Tracker.getTopHP();
+        assertEquals(testString, actual);
     }
 
     /**
@@ -261,8 +287,8 @@ public class TrackerTest extends Tracker {
         Tracker.addPokemon(1, "good3",0,100,"Normal","none"); // normal (capital edition)
         Tracker.addPokemon(1, "invalid",0,20,"Fighting","Steel"); // non-normal type
         // copied from getAllType test, but with changed attack.
-        String testString = ("\nPokemon with normal as a primary or secondary type:\ngood\ngood2\ngood3\n");
-        String actual = Tracker.getAllType("normal");
+        String testString = ("\nThe average Attack value of all Pokemon is: 60 Attack.");
+        String actual = Tracker.getAverageAttack();
         assertEquals(testString, actual);
     }
 
