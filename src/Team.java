@@ -40,4 +40,27 @@ public class Team {
         //TODO
         return 0;
     }
+
+    /**
+     * Returns a String representation of a Team.
+     * Done by Jade Torres.
+     *
+     * @return a String containing all elements in field pokemon.
+     */
+    @Override
+    public String toString() {
+        StringBuilder statistics = new StringBuilder();
+
+        statistics.append("********************");
+        statistics.append("\n\n\tTEAM #").append(number);
+
+        //Iterates through the elements in field pokemon.
+        for (Pokemon p : pokemon) {
+            statistics.append("\n\n");
+            statistics.append(p.toString());
+        }
+
+        statistics.append("\n\n");
+        return statistics.toString().stripTrailing();
+    }
 }

@@ -12,5 +12,22 @@ import java.util.Arrays;
  * @version 2.0 - March 18, 2025
  */
 public class TrackerTest extends Tracker {
+
+    /**
+     * Tests done by Jade Torres.
+     */
+
+    //TODO: ADD TESTS
+
+    /**
+     * Tests done by Jordan Tran.
+     */
+
+    //TODO: ADD TESTS
+
+    /**
+     * Tests done by Hasan Salhi.
+     */
+
     //TODO: ADD TESTS
 }
