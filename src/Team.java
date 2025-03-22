@@ -22,12 +22,12 @@ public class Team {
 
     /**
      * Adds a Pokemon to a Team.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @param pokemon, the Pokemon to be added.
      */
     public void addPokemon(Pokemon pokemon) {
-        //TODO
+        this.pokemon.add(pokemon);
     }
 
     /**

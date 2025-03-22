@@ -36,60 +36,58 @@ public class Pokemon {
 
     /**
      * Assigns a new value to field move.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @param move, the new value of field move.
      */
     public void addMove(String move) {
-        //TODO
+        this.move = move;
     }
 
     /**
      * Assigns a new value to field item.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @param item, the new value of field item.
      */
     public void addItem(String item) {
-        //TODO
+        this.item = item;
     }
 
     /**
      * Increases the value of field wins by one.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      */
     public void addWin() {
-        //TODO
+        this.wins++;
     }
 
     /**
      * Increases the value of field losses by one.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      */
     public void addLoss() {
-        //TODO
+        this.losses++;
     }
 
     /**
      * Returns the name a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field name.
      */
     public String getName() {
-        //TODO
-        return "";
+        return this.name;
     }
 
     /**
      * Returns the HP a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan SaLhi
      *
      * @return field hp.
      */
     public int getHP() {
-        //TODO
-        return 0;
+        return this.hp;
     }
 
     /**
@@ -99,8 +97,7 @@ public class Pokemon {
      * @return field attack.
      */
     public int getAttack() {
-        //TODO
-        return 0;
+        return this.attack;
     }
 
     /**
@@ -110,63 +107,57 @@ public class Pokemon {
      * @return field typeOne.
      */
     public Type getTypeOne() {
-        //TODO
-        return null;
+        return this.typeOne;
     }
 
     /**
      * Returns the second Type a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field typeTwo.
      */
     public Type getTypeTwo() {
-        //TODO
-        return null;
+        return this.typeTwo;
     }
 
     /**
      * Returns the move a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field move.
      */
     public String getMove() {
-        //TODO
-        return "";
+        return this.move;
     }
 
     /**
      * Returns the item a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field item.
      */
     public String getItem() {
-        //TODO
-        return "";
+        return this.item;
     }
 
     /**
      * Returns the number of wins a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field wins.
      */
     public int getWins() {
-        //TODO
-        return 0;
+        return this.wins;
     }
 
     /**
      * Returns the number of losses a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return field losses.
      */
     public int getLosses() {
-        //TODO
-        return 0;
+        return this.getLosses();
     }
 
     /**

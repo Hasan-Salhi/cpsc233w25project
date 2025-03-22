@@ -9,14 +9,15 @@ import java.util.ArrayList;
  * @version 2.0 - March 18, 2025
  */
 public class Tracker {
-    private ArrayList<Team> teams;
+    private  ArrayList<Team> teams;
 
     /**
      * Adds a Team to the Tracker.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      */
     public static void addTeam() {
         //TODO
+
     }
 
     /**
@@ -43,7 +44,7 @@ public class Tracker {
 
     /**
      * Returns the top 3 Pokemon with the highest attack.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return a String containing the top 3 Pokemon with the highest attack.
      */
