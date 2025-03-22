@@ -3,7 +3,7 @@
  * A class for holding Pokemon objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.0 - March 18, 2025
+ * @version 1.1 - March 22, 2025
  */
 public class Pokemon {
     private String name;

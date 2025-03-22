@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * A class for tracking Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 2.0 - March 18, 2025
+ * @version 2.1 - March 22, 2025
  */
 public class Tracker {
     private  ArrayList<Team> teams;

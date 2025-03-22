@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * A class for holding Team objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.0 - March 18, 2025
+ * @version 1.1 - March 21, 2025
  */
 public class Team {
     private static int number = 0;
