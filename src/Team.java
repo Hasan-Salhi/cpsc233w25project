@@ -32,20 +32,14 @@ public class Team {
 
     /**
      * Returns the number a Team has.
-     * Done by Jordan Tran.
+     * Done by (NAME).
      *
      * @return field number.
      */
     public int getNumber() {
-        return number;
+        //TODO
+        return 0;
     }
-
-    /**
-     * Returns the arraylist of a certain teams Pokemon
-     * Done by Jordan Tran
-     * @return list of pokemon
-     */
-    public ArrayList<Pokemon> getPokemon(){return pokemon;}
 
     /**
      * Returns a String representation of a Team.
