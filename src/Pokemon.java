@@ -71,6 +71,18 @@ public class Pokemon {
     }
 
     /**
+     * set wins in case of file reading
+     * @param wins is the recorded number of wins
+     */
+    public void setWins(int wins){this.wins = wins;}
+
+    /**
+     * set losses in case of file reading
+     * @param losses is the recorded number of losses
+     */
+    public void setLosses(int losses){this.losses = losses;}
+
+    /**
      * Returns the name a Pokemon has.
      * Done by Hasan Salhi
      *
@@ -156,8 +168,25 @@ public class Pokemon {
      *
      * @return field losses.
      */
-    public int getLosses() {
-        return this.getLosses();
+    public int getLosses() {return this.losses;}
+
+    /**
+     * Converts any given Pokemon object into CSV format for file writing
+     * Done by Jordan Tran
+     */
+    public String getPokemon(){
+        StringBuilder toReturn = new StringBuilder();
+        toReturn.append(this.getName()).append(","); // appending data as well as a comma
+        toReturn.append(this.getHP()).append(",");
+        toReturn.append(this.getAttack()).append(",");
+        toReturn.append(this.getTypeOne()).append(",");
+        toReturn.append(this.getTypeTwo()).append(",");
+        toReturn.append(this.getMove()).append(",");
+        toReturn.append(this.getItem()).append(",");
+        toReturn.append(this.getWins()).append(",");
+        toReturn.append(this.getLosses()); // don't need comma here as it is the last element
+
+        return toReturn.toString();
     }
 
     /**
