@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2.1 - March 22, 2025
  */
 public class Tracker {
-    private static ArrayList<Team> teams = new ArrayList<Team>();
+    private static ArrayList<Team> teams = new ArrayList<>();
 
     /**
      * Adds a Team to the Tracker.
@@ -46,7 +46,7 @@ public class Tracker {
      */
     public static String getTopHP() {
         StringBuilder top3 = new StringBuilder();
-        ArrayList<ArrayList<Object>> allPokemonNameAttack = new ArrayList<>();
+        ArrayList<ArrayList<Object>> allPokemonNameHP = new ArrayList<>();
 
         //Puts all Pokemon names and their attack into a 2D arraylist
         for (Team team : teams) {
@@ -54,17 +54,27 @@ public class Tracker {
                 ArrayList<Object> currentPokemon = new ArrayList<>();
                 currentPokemon.add(pokemon.getName());
                 currentPokemon.add(pokemon.getHP());
+                allPokemonNameHP.add(currentPokemon);
             }
         }
 
-        //Sorts them according to attack
-        allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-        Collections.reverse(allPokemonNameAttack);
-        top3.append("Highest: " + allPokemonNameAttack.get(0).get(0) + " with " + allPokemonNameAttack.get(0).get(1) + " HP\n");
-        top3.append("Second: " + allPokemonNameAttack.get(1).get(0) + " with " + allPokemonNameAttack.get(1).get(1) + " HP\n");
-        top3.append("Third: " + allPokemonNameAttack.get(2).get(0) + " with " + allPokemonNameAttack.get(2).get(1) + " HP\n");
+        if (allPokemonNameHP.size() == 1) {return "Highest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP\n";}
+        else if (allPokemonNameHP.size() == 2) {
+            allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+            Collections.reverse(allPokemonNameHP);
 
-        return top3.toString();
+            return "Highest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP\n" + "Second: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP\n";
+        } else {
+
+            //Sorts them according to attack
+            allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+            Collections.reverse(allPokemonNameHP);
+            top3.append("Highest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP\n");
+            top3.append("Second: ").append(allPokemonNameHP.get(1).get(0)).append(" with ").append(allPokemonNameHP.get(1).get(1)).append(" HP\n");
+            top3.append("Third: ").append(allPokemonNameHP.get(2).get(0)).append(" with ").append(allPokemonNameHP.get(2).get(1)).append(" HP\n");
+
+            return top3.toString();
+        }
     }
 
     /**
@@ -83,17 +93,27 @@ public class Tracker {
                 ArrayList<Object> currentPokemon = new ArrayList<>();
                 currentPokemon.add(pokemon.getName());
                 currentPokemon.add(pokemon.getAttack());
+                allPokemonNameAttack.add(currentPokemon);
             }
         }
 
-        //Sorts them according to attack
-        allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-        Collections.reverse(allPokemonNameAttack);
-        top3.append("Highest: " + allPokemonNameAttack.get(0).get(0) + " with " + allPokemonNameAttack.get(0).get(1) + " Attack\n");
-        top3.append("Second: " + allPokemonNameAttack.get(1).get(0) + " with " + allPokemonNameAttack.get(1).get(1) + " Attack\n");
-        top3.append("Third: " + allPokemonNameAttack.get(2).get(0) + " with " + allPokemonNameAttack.get(2).get(1) + " Attack\n");
+        if (allPokemonNameAttack.size() == 1) {return "Highest: " + allPokemonNameAttack.getFirst().getFirst() + " with " + allPokemonNameAttack.getFirst().get(1) + " Attack\n";}
+        else if (allPokemonNameAttack.size() == 2) {
+            allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+            Collections.reverse(allPokemonNameAttack);
 
-        return top3.toString();
+            return "Highest: " + allPokemonNameAttack.getFirst().getFirst() + " with " + allPokemonNameAttack.getFirst().get(1) + " Attack\n" + "Second: " + allPokemonNameAttack.get(1).getFirst() + " with " + allPokemonNameAttack.get(1).get(1) + " Attack\n";
+        } else {
+
+            //Sorts them according to attack
+            allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+            Collections.reverse(allPokemonNameAttack);
+            top3.append("Highest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack\n");
+            top3.append("Second: ").append(allPokemonNameAttack.get(1).get(0)).append(" with ").append(allPokemonNameAttack.get(1).get(1)).append(" Attack\n");
+            top3.append("Third: ").append(allPokemonNameAttack.get(2).get(0)).append(" with ").append(allPokemonNameAttack.get(2).get(1)).append(" Attack\n");
+
+            return top3.toString();
+        }
     }
 
     /**
@@ -118,7 +138,7 @@ public class Tracker {
 
         //Appends all names to StringBuilder in a list manner
         for (String pokemonName : allPokemonNameType) {
-            pokemonCommonType.append(pokemonName + "\n");
+            pokemonCommonType.append(pokemonName).append("\n");
         }
 
         return pokemonCommonType.toString();
