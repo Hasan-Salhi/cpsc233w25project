@@ -98,25 +98,56 @@ public class Tracker {
 
     /**
      * Returns all Pokemon with the same Type.
-     * Done by Jordan Tran.
+     * Done by Hasan Salhi
      *
      * @param type, the Type to search for.
      * @return a String containing the all Pokemon with the same Type.
      */
     public static String getAllType(Type type) {
-        //TODO
-        return "";
+        StringBuilder pokemonCommonType = new StringBuilder();
+        ArrayList<String> allPokemonNameType = new ArrayList<>();
+
+        //Adds Pokemon name to arraylist of name if one of types is matching
+        for (Team team : teams) {
+            for (Pokemon pokemon : team.getPokemon()) {
+                if (pokemon.getTypeOne().equals(type) || pokemon.getTypeTwo().equals(type)) {
+                    allPokemonNameType.add(pokemon.getName());
+                }
+            }
+        }
+
+        //Appends all names to StringBuilder in a list manner
+        for (String pokemonName : allPokemonNameType) {
+            pokemonCommonType.append(pokemonName + "\n");
+        }
+
+        return pokemonCommonType.toString();
     }
 
     /**
      * Returns average attack of all pokemon
-     * Done by Jordan Tran
+     * Done by Hasan Salhi
      *
      * @return average attack value for all pokemon
      */
     public static int getAvgAtk(){
-        //TODO
-        return 5;
+        ArrayList<Integer> allAtk = new ArrayList<>();
+
+        //Adds attack of all pokemon to one arraylist
+        for (Team team : teams) {
+            for (Pokemon pokemon : team.getPokemon()) {
+                allAtk.add(pokemon.getAttack());
+            }
+        }
+
+        //calculates average
+        int mean = 0;
+        for (int i = 0; i < allAtk.size(); i++) {
+            mean += allAtk.get(i);
+        }
+        mean /= allAtk.size();
+
+        return mean;
     }
 
     /**
