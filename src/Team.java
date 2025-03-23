@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Team {
     private static int number = 0;
+    private int teamNum; // unique number for each team
     private ArrayList<Pokemon> pokemon;
 
     /**
@@ -16,7 +17,7 @@ public class Team {
      * Done by Jade Torres.
      */
     public Team() {
-        number += 1;
+        teamNum = ++number;
         pokemon = new ArrayList<>();
     }
 
@@ -37,7 +38,7 @@ public class Team {
      * @return field number.
      */
     public int getNumber() {
-        return number;
+        return teamNum;
     }
 
     /**
@@ -58,7 +59,7 @@ public class Team {
         StringBuilder statistics = new StringBuilder();
 
         statistics.append("********************");
-        statistics.append("\n\n\tTEAM #").append(number);
+        statistics.append("\n\n\tTEAM #").append(teamNum);
 
         //Iterates through the elements in field pokemon.
         for (Pokemon p : pokemon) {

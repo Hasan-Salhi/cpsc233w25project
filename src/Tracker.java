@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -16,9 +17,11 @@ public class Tracker {
      * Done by Hasan Salhi
      */
     public static void addTeam() {
-        //TODO
-
+        Team newTeam = new Team();
+        teams.add(newTeam);
+        // making a new Team object
     }
+
 
     /**
      * Returns all Pokemon from all Teams.
@@ -125,7 +128,85 @@ public class Tracker {
                 8) list the top 3 Pokemon with the highest Attack
                 9) list the top 3 Pokemon with the highest HP
                 10) get the average Attack of all Pokemon
-                11) list all Pokemon of a certain type""";
+                11) list all Pokemon of a certain type
+                
+                Data Handling
+                12) Import data from a file
+                13) Write data to a file""";
+
+    }
+
+    /**
+     * Reads a file
+     * @param fileName, the file name of the file to be read
+     * Done by Jordan Tran
+     */
+    public static void readFile(String fileName){
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("src/" + fileName));
+
+            String line; // line to temporarily store data from reader
+            ArrayList<String[]> lineValues = new ArrayList<String[]>(); // arraylist to store string list values
+
+            while((line = br.readLine()) != null){
+                String[] values = line.split(","); // split line into a list to read
+                lineValues.add(values); // add to arraylist
+            }
+
+            int teamCount = Integer.parseInt((lineValues.getLast())[0]); // integer to count number of team for team number variable
+            // obtained by getting the team number of the last team in the list
+            for(int i = 0; i < teamCount; i++){
+                addTeam(); //adding teams to the arraylist
+            }
+
+            for(String[] currentLine : lineValues){ // looping through arraylist of data
+                for (Team team : teams) {
+                    if (team.getNumber() == Integer.parseInt(currentLine[0])) {
+                        String name = currentLine[1]; // turning data into Pokemon attributes
+                        int hp = Integer.parseInt(currentLine[2]);
+                        int atk = Integer.parseInt(currentLine[3]);
+                        Type typeOne = Type.valueOf(currentLine[4]);
+                        Type typeTwo = Type.valueOf(currentLine[5]);
+
+                        Pokemon toAdd = new Pokemon(name, hp, atk, typeOne, typeTwo); // making pokemon
+                        toAdd.addMove(currentLine[6]);
+                        toAdd.addItem(currentLine[7]);
+                        toAdd.setWins(Integer.parseInt(currentLine[8])); // setting secondary parameters
+                        toAdd.setLosses(Integer.parseInt(currentLine[9]));
+
+                        team.addPokemon(toAdd); // add said pokemon
+                    }
+                }
+            }
+            System.out.println("Data imported successfully");
+        }catch (IOException e){
+            System.out.println("Error reading file " + e);
+        }
+    }
+
+    /**
+     * Writes current data to a file
+     * Done by Jordan Tran
+     */
+    public static void writeFile(String fileName){
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileName))); // making a bufferedWriter
+            for(Team team : teams){ // looping through teams list
+                ArrayList<Pokemon> pokemon = team.getPokemon(); // get arraylist of Pokemon
+                int teamNumber = team.getNumber(); // get teamNumber integer
+
+                for(Pokemon toWrite : pokemon){
+                    bw.write(String.valueOf(teamNumber) + ","); // convert to string to be written
+                    bw.write(toWrite.getPokemon()); // using the humble for loop to write all pokemon in a team
+                    bw.newLine(); // new line for each pokemon
+                }
+
+            }
+            System.out.println("File written successfully.");
+        }catch(IOException e){
+            System.out.println("Error writing file " + e);
+
+        }
 
     }
 
@@ -145,15 +226,16 @@ public class Tracker {
             switch(choice){ // switch to handle numbers as well as inputs greater than 12 or less than 1
                 case 1:
                     addTeam();
+                    System.out.println("Team added to the list.");
                     break;
                 case 2: {
                     if (teams.isEmpty()) { // make sure teams is not empty
                         System.out.println("\nThere are no teams to add a Pokemon to!");
                     } else {
-                        System.out.println("What team number would you like to add a Pokemon to?\n");
+                        System.out.println("What team number would you like to add a Pokemon to?");
                         int teamChoice = scan.nextInt();
                         if (teamChoice > teams.size() || teamChoice < 1) { // account for teams starting at 1
-                            System.out.println("That team does not exist!;");
+                            System.out.println("That team does not exist!");
                         } else {
                             //actual process of adding a pokemon starts here
                             scan.nextLine(); //"Fake" input to parse out the extra \n when the user presses enter.
@@ -326,6 +408,27 @@ public class Tracker {
                         Type toFind = Type.valueOf(type.toUpperCase()); // convert type into a valid enum
                         System.out.println(getAllType(toFind));
                     }
+                    break;
+                }
+
+                case 12: {
+                    //"Fake" input to parse out the extra \n when the user presses enter.
+                    scan.nextLine();
+
+                    System.out.println("Please enter the name of the .csv file you would like to import.");
+                    String fileName = scan.nextLine(); // getting name of the file
+
+                    readFile(fileName);
+                    break;
+                }
+
+                case 13: {
+                    //"Fake" input to parse out the extra \n when the user presses enter.
+                    scan.nextLine();
+                    System.out.println("Please enter the name of the .csv file you would like to write to.");
+                    String fileName = scan.nextLine();
+
+                    writeFile(fileName);
                     break;
                 }
             }
