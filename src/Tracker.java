@@ -1,3 +1,5 @@
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -16,8 +18,7 @@ public class Tracker {
      * Done by Hasan Salhi
      */
     public static void addTeam() {
-        //TODO
-
+        teams.add(new Team());
     }
 
     /**
@@ -36,13 +37,31 @@ public class Tracker {
 
     /**
      * Returns the top 3 Pokemon with the highest HP.
-     * Done by (NAME).
+     * Done by Hasan Salhi
      *
      * @return a String containing the top 3 Pokemon with the highest HP.
      */
     public static String getTopHP() {
-        //TODO
-        return "";
+        StringBuilder top3 = new StringBuilder();
+        ArrayList<ArrayList<Object>> allPokemonNameAttack = new ArrayList<>();
+
+        //Puts all Pokemon names and their attack into a 2D arraylist
+        for (Team team : teams) {
+            for (Pokemon pokemon : team.getPokemon()) {
+                ArrayList<Object> currentPokemon = new ArrayList<>();
+                currentPokemon.add(pokemon.getName());
+                currentPokemon.add(pokemon.getHP());
+            }
+        }
+
+        //Sorts them according to attack
+        allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+        Collections.reverse(allPokemonNameAttack);
+        top3.append("Highest: " + allPokemonNameAttack.get(0).get(0) + " with " + allPokemonNameAttack.get(0).get(1) + " HP\n");
+        top3.append("Second: " + allPokemonNameAttack.get(1).get(0) + " with " + allPokemonNameAttack.get(1).get(1) + " HP\n");
+        top3.append("Third: " + allPokemonNameAttack.get(2).get(0) + " with " + allPokemonNameAttack.get(2).get(1) + " HP\n");
+
+        return top3.toString();
     }
 
     /**
@@ -52,8 +71,26 @@ public class Tracker {
      * @return a String containing the top 3 Pokemon with the highest attack.
      */
     public static String getTopAttack() {
-        //TODO
-        return "";
+        StringBuilder top3 = new StringBuilder();
+        ArrayList<ArrayList<Object>> allPokemonNameAttack = new ArrayList<>();
+
+        //Puts all Pokemon names and their attack into a 2D arraylist
+        for (Team team : teams) {
+            for (Pokemon pokemon : team.getPokemon()) {
+                ArrayList<Object> currentPokemon = new ArrayList<>();
+                currentPokemon.add(pokemon.getName());
+                currentPokemon.add(pokemon.getAttack());
+            }
+        }
+
+        //Sorts them according to attack
+        allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
+        Collections.reverse(allPokemonNameAttack);
+        top3.append("Highest: " + allPokemonNameAttack.get(0).get(0) + " with " + allPokemonNameAttack.get(0).get(1) + " Attack\n");
+        top3.append("Second: " + allPokemonNameAttack.get(1).get(0) + " with " + allPokemonNameAttack.get(1).get(1) + " Attack\n");
+        top3.append("Third: " + allPokemonNameAttack.get(2).get(0) + " with " + allPokemonNameAttack.get(2).get(1) + " Attack\n");
+
+        return top3.toString();
     }
 
     /**
