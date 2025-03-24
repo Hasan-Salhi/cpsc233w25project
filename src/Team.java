@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * A class for holding Team objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.1 - March 21, 2025
+ * @version 1.2 - March 24, 2025
  */
 public class Team {
     private static int number = 0;
@@ -17,13 +17,13 @@ public class Team {
      * Done by Jade Torres.
      */
     public Team() {
-        teamNum = ++number;
+        teamNum = number++;
         pokemon = new ArrayList<>();
     }
 
     /**
      * Adds a Pokemon to a Team.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param pokemon, the Pokemon to be added.
      */
@@ -42,11 +42,14 @@ public class Team {
     }
 
     /**
-     * Returns the arraylist of a certain teams Pokemon
-     * Done by Jordan Tran
-     * @return list of pokemon
+     * Returns the ArrayList of a certain team's Pokemon.
+     * Done by Jordan Tran.
+     *
+     * @return list of pokemon.
      */
-    public ArrayList<Pokemon> getPokemon(){return pokemon;}
+    public ArrayList<Pokemon> getPokemon() {
+        return pokemon;
+    }
 
     /**
      * Returns a String representation of a Team.
@@ -64,10 +67,9 @@ public class Team {
         //Iterates through the elements in field pokemon.
         for (Pokemon p : pokemon) {
             statistics.append("\n\n");
-            statistics.append(p.toString());
+            statistics.append(p);
         }
 
-        statistics.append("\n\n");
-        return statistics.toString().stripTrailing();
+        return statistics.toString();
     }
 }

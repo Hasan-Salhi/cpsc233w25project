@@ -3,7 +3,7 @@
  * A class for holding Pokemon objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
- * @version 1.1 - March 22, 2025
+ * @version 1.2 - March 24, 2025
  */
 public class Pokemon {
     private String name;
@@ -36,7 +36,7 @@ public class Pokemon {
 
     /**
      * Assigns a new value to field move.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param move, the new value of field move.
      */
@@ -46,7 +46,7 @@ public class Pokemon {
 
     /**
      * Assigns a new value to field item.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param item, the new value of field item.
      */
@@ -56,7 +56,7 @@ public class Pokemon {
 
     /**
      * Increases the value of field wins by one.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      */
     public void addWin() {
         this.wins++;
@@ -64,27 +64,35 @@ public class Pokemon {
 
     /**
      * Increases the value of field losses by one.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      */
     public void addLoss() {
         this.losses++;
     }
 
     /**
-     * set wins in case of file reading
-     * @param wins is the recorded number of wins
+     * Set wins in case of file reading.
+     * Done by Jordan Tran.
+     *
+     * @param wins is the recorded number of wins/
      */
-    public void setWins(int wins){this.wins = wins;}
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
 
     /**
-     * set losses in case of file reading
-     * @param losses is the recorded number of losses
+     * Set losses in case of file reading.
+     * Done by Jordan Tran.
+     *
+     * @param losses is the recorded number of losses.
      */
-    public void setLosses(int losses){this.losses = losses;}
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
 
     /**
      * Returns the name a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field name.
      */
@@ -94,7 +102,7 @@ public class Pokemon {
 
     /**
      * Returns the HP a Pokemon has.
-     * Done by Hasan SaLhi
+     * Done by Hasan SaLhi.
      *
      * @return field hp.
      */
@@ -104,7 +112,7 @@ public class Pokemon {
 
     /**
      * Returns the attack value a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi.
      *
      * @return field attack.
      */
@@ -114,7 +122,7 @@ public class Pokemon {
 
     /**
      * Returns the first Type a Pokemon has.
-     * Done by (NAME).
+     * Done by Hasan Salhi.
      *
      * @return field typeOne.
      */
@@ -124,7 +132,7 @@ public class Pokemon {
 
     /**
      * Returns the second Type a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field typeTwo.
      */
@@ -134,7 +142,7 @@ public class Pokemon {
 
     /**
      * Returns the move a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field move.
      */
@@ -144,7 +152,7 @@ public class Pokemon {
 
     /**
      * Returns the item a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field item.
      */
@@ -154,7 +162,7 @@ public class Pokemon {
 
     /**
      * Returns the number of wins a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field wins.
      */
@@ -164,7 +172,7 @@ public class Pokemon {
 
     /**
      * Returns the number of losses a Pokemon has.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return field losses.
      */
@@ -172,7 +180,7 @@ public class Pokemon {
 
     /**
      * Converts any given Pokemon object into CSV format for file writing
-     * Done by Jordan Tran
+     * Done by Jordan Tran.
      */
     public String getPokemon(){
         StringBuilder toReturn = new StringBuilder();
@@ -209,6 +217,6 @@ public class Pokemon {
         statistics.append("\nWins: ").append(wins);
         statistics.append("\nLosses: ").append(losses);
 
-        return statistics.toString().stripTrailing();
+        return statistics.toString();
     }
 }
