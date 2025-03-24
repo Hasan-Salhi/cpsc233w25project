@@ -15,14 +15,12 @@ public class Tracker {
 
     /**
      * Adds a Team to the Tracker.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      */
     public static void addTeam() {
-        Team newTeam = new Team();
-        teams.add(newTeam);
+        teams.add(new Team());
         // making a new Team object
     }
-
 
     /**
      * Returns all Pokemon from all Teams.
@@ -40,7 +38,7 @@ public class Tracker {
 
     /**
      * Returns the top 3 Pokemon with the highest HP.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return a String containing the top 3 Pokemon with the highest HP.
      */
@@ -79,7 +77,7 @@ public class Tracker {
 
     /**
      * Returns the top 3 Pokemon with the highest attack.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @return a String containing the top 3 Pokemon with the highest attack.
      */
@@ -118,7 +116,7 @@ public class Tracker {
 
     /**
      * Returns all Pokemon with the same Type.
-     * Done by Hasan Salhi
+     * Done by Hasan Salhi.
      *
      * @param type, the Type to search for.
      * @return a String containing the all Pokemon with the same Type.
@@ -145,10 +143,10 @@ public class Tracker {
     }
 
     /**
-     * Returns average attack of all pokemon
-     * Done by Hasan Salhi
+     * Returns average attack of all Pokemon.
+     * Done by Hasan Salhi.
      *
-     * @return average attack value for all pokemon
+     * @return average attack value for all pokemon.
      */
     public static int getAvgAtk(){
         ArrayList<Integer> allAtk = new ArrayList<>();
@@ -171,9 +169,11 @@ public class Tracker {
     }
 
     /**
-     * Helper method to determine if an entered type is valid
-     * @param input, the input of the user
-     * @return true for valid type false for invalid
+     * Helper method to determine if an entered type is valid.
+     * Done by Jordan Tran.
+     *
+     * @param input, the input of the user.
+     * @return true for valid type false for invalid.
      */
     public static boolean checkEnum(String input){
         try{
@@ -220,14 +220,16 @@ public class Tracker {
                 
                 Data Handling
                 12) Import data from a file
-                13) Write data to a file""";
+                13) Write data to a file
+                """;
 
     }
 
     /**
-     * Reads a file
-     * @param fileName, the file name of the file to be read
-     * Done by Jordan Tran
+     * Reads a file.
+     * Done by Jordan Tran.
+     *
+     * @param fileName, the file name of the file to be read.
      */
     public static void readFile(String fileName){
         try {
@@ -273,8 +275,8 @@ public class Tracker {
     }
 
     /**
-     * Writes current data to a file
-     * Done by Jordan Tran
+     * Writes current data to a file.
+     * Done by Jordan Tran.
      */
     public static void writeFile(String fileName){
         try{
@@ -314,33 +316,33 @@ public class Tracker {
             switch(choice){ // switch to handle numbers as well as inputs greater than 12 or less than 1
                 case 1:
                     addTeam();
-                    System.out.println("Team added to the list.");
+                    System.out.println("\nTeam added.");
                     break;
                 case 2: {
                     if (teams.isEmpty()) { // make sure teams is not empty
                         System.out.println("\nThere are no teams to add a Pokemon to!");
                     } else {
-                        System.out.println("What team number would you like to add a Pokemon to?");
+                        System.out.println("\nWhat team number would you like to add a Pokemon to?");
                         int teamChoice = scan.nextInt();
                         if (teamChoice > teams.size() || teamChoice < 1) { // account for teams starting at 1
-                            System.out.println("That team does not exist!");
+                            System.out.println("\nThat team does not exist!");
                         } else {
                             //actual process of adding a pokemon starts here
                             scan.nextLine(); //"Fake" input to parse out the extra \n when the user presses enter.
 
-                            System.out.println("Enter the Pokemon's name:");
+                            System.out.println("\nEnter the Pokemon's name:");
                             String name = scan.nextLine();
-                            System.out.println("Enter the Pokemon's HP:");
+                            System.out.println("\nEnter the Pokemon's HP:");
                             int hp = scan.nextInt();
-                            System.out.println("Enter the Pokemon's Attack value:");
+                            System.out.println("\nEnter the Pokemon's Attack value:");
                             int attack = scan.nextInt();
 
                             //"Fake" input to parse out the extra \n when the user presses enter.
                             scan.nextLine();
 
-                            System.out.println("Enter the Pokemon's type:");
+                            System.out.println("\nEnter the Pokemon's type:");
                             String testOne = scan.nextLine();
-                            System.out.println("Enter the Pokemon's second type (if not applicable, enter \"none\"):");
+                            System.out.println("\nEnter the Pokemon's second type (if not applicable, enter \"none\"):");
                             String testTwo = scan.nextLine(); // grabbing string inputs to check
 
                             if(checkEnum(testOne) && checkEnum(testTwo)){ // checking valid type input
@@ -382,7 +384,7 @@ public class Tracker {
                         }
                     }
                     if (!addMove) {
-                        System.out.println("Pokemon does not exist!");
+                        System.out.println("\nPokemon does not exist!");
                     }
                     break;
                 }
@@ -408,7 +410,7 @@ public class Tracker {
                         }
                     }
                     if (!addItem) {
-                        System.out.println("Pokemon does not exist!");
+                        System.out.println("\nPokemon does not exist!");
                     }
                     break;
                 }
@@ -433,7 +435,7 @@ public class Tracker {
                         }
                     }
                     if (!addWin) {
-                        System.out.println("Pokemon does not exist!");
+                        System.out.println("\nPokemon does not exist!");
                     }
 
                     break;
@@ -459,7 +461,7 @@ public class Tracker {
                         }
                     }
                     if (!addLoss) {
-                        System.out.println("Pokemon does not exist!");
+                        System.out.println("\nPokemon does not exist!");
                     }
                     break;
                 }
@@ -481,7 +483,7 @@ public class Tracker {
                 }
 
                 case 10: {
-                    System.out.println("The average attack value of all Pokemon in the Tracker is: " + getAvgAtk() + " ATK.");
+                    System.out.println("\nThe average attack value of all Pokemon in the Tracker is: " + getAvgAtk() + " ATK.");
                     break;
                 }
 
@@ -503,7 +505,7 @@ public class Tracker {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
-                    System.out.println("Please enter the name of the .csv file you would like to import.");
+                    System.out.println("\nPlease enter the name of the .csv file you would like to import.");
                     String fileName = scan.nextLine(); // getting name of the file
 
                     readFile(fileName);
@@ -513,7 +515,7 @@ public class Tracker {
                 case 13: {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
-                    System.out.println("Please enter the name of the .csv file you would like to write to.");
+                    System.out.println("\nPlease enter the name of the .csv file you would like to write to.");
                     String fileName = scan.nextLine();
 
                     writeFile(fileName);
@@ -522,6 +524,6 @@ public class Tracker {
             }
 
         }while(choice != -1); // do while to loop through menu
-        System.out.println("Tracker closed.");
+        System.out.println("\nTracker closed.");
     }
 }
