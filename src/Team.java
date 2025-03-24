@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @version 1.2 - March 24, 2025
  */
 public class Team {
-    private static int number = 0;
+    private static int totalTeams = 0;
     private int teamNum; // unique number for each team
     private ArrayList<Pokemon> pokemon;
 
@@ -17,7 +17,8 @@ public class Team {
      * Done by Jade Torres.
      */
     public Team() {
-        teamNum = number++;
+        totalTeams++;
+        teamNum = totalTeams;
         pokemon = new ArrayList<>();
     }
 
@@ -71,5 +72,14 @@ public class Team {
         }
 
         return statistics.toString();
+    }
+
+    /**
+     * Resets the number of total teams.
+     * Used in the TrackerTest class.
+     * Done by Jade Torres.
+     */
+    public static void resetTotal() {
+        totalTeams = 0;
     }
 }

@@ -301,6 +301,15 @@ public class Tracker {
     }
 
     /**
+     * Empties field teams.
+     * Used in the TrackerTest class.
+     * Done by Jade Torres.
+     */
+    public static void emptyTeams() {
+        teams.clear();
+    }
+
+    /**
      * The main method for running the Tracker.
      * Done by Jordan Tran.
      */
