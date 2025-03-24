@@ -160,8 +160,8 @@ public class Tracker {
 
         //calculates average
         int mean = 0;
-        for (int i = 0; i < allAtk.size(); i++) {
-            mean += allAtk.get(i);
+        for (Integer attack : allAtk) {
+            mean += attack;
         }
         mean /= allAtk.size();
 
@@ -236,7 +236,7 @@ public class Tracker {
             BufferedReader br = new BufferedReader(new FileReader("src/" + fileName));
 
             String line; // line to temporarily store data from reader
-            ArrayList<String[]> lineValues = new ArrayList<String[]>(); // arraylist to store string list values
+            ArrayList<String[]> lineValues = new ArrayList<>(); // arraylist to store string list values
 
             while((line = br.readLine()) != null){
                 String[] values = line.split(","); // split line into a list to read
@@ -286,7 +286,7 @@ public class Tracker {
                 int teamNumber = team.getNumber(); // get teamNumber integer
 
                 for(Pokemon toWrite : pokemon){
-                    bw.write(String.valueOf(teamNumber) + ","); // convert to string to be written
+                    bw.write(teamNumber + ","); // convert to string to be written
                     bw.write(toWrite.getPokemon()); // using the humble for loop to write all pokemon in a team
                     bw.newLine(); // new line for each pokemon
                 }
@@ -346,7 +346,7 @@ public class Tracker {
                             String testTwo = scan.nextLine(); // grabbing string inputs to check
 
                             if(checkEnum(testOne) && checkEnum(testTwo)){ // checking valid type input
-                                Type typeOne = Type.valueOf(testOne.toUpperCase()); // .valueOf is case sensitive so we need to turn input to uppercase
+                                Type typeOne = Type.valueOf(testOne.toUpperCase()); // .valueOf is case-sensitive so we need to turn input to uppercase
                                 Type typeTwo = Type.valueOf(testTwo.toUpperCase());
                                 // grab pokemon info and turn it into a pokemon
                                 Pokemon toAdd = new Pokemon(name, hp, attack, typeOne, typeTwo);
@@ -390,7 +390,7 @@ public class Tracker {
                 }
 
 
-                case 4: {// same same as for 3)
+                case 4: {// same as for 3)
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
