@@ -147,6 +147,9 @@ public class Pokemon {
      * @return field move.
      */
     public String getMove() {
+        if(this.move == null){
+            return "NO MOVE";
+        }
         return this.move;
     }
 
@@ -157,6 +160,9 @@ public class Pokemon {
      * @return field item.
      */
     public String getItem() {
+        if(this.item == null){
+            return "NO ITEM";
+        }
         return this.item;
     }
 
