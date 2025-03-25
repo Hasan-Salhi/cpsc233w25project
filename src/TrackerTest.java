@@ -1,8 +1,12 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * CPSC 233 W25 Project TrackerTest Class
@@ -12,7 +16,6 @@ import java.util.ArrayList;
  * @version 2.0 - March 18, 2025
  */
 public class TrackerTest extends Tracker {
-
     /**
      * Resets the tracker before each test.
      */
@@ -214,7 +217,130 @@ public class TrackerTest extends Tracker {
      * Tests done by Jordan Tran.
      */
 
-    //TODO: ADD TESTS
+    @Test
+    void testGetAllPokemon(){
+        Team team = new Team();
+        Team teamTwo = new Team();
+        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+
+        team.addPokemon(aron);
+        teamTwo.addPokemon(pidgey);
+
+        Tracker.teams.add(team);
+        Tracker.teams.add(teamTwo);
+
+        String expected = """
+                
+                ********************
+                
+                \tTEAM #1
+                
+                Pokemon: Aron
+                HP: 50
+                Attack: 30
+                Type: STEEL
+                Second Type: ROCK
+                Move: null
+                Item: null
+                Wins: 0
+                Losses: 0
+                ********************
+                
+                \tTEAM #2
+                
+                Pokemon: Pidgey
+                HP: 50
+                Attack: 20
+                Type: NORMAL
+                Second Type: FLYING
+                Move: null
+                Item: null
+                Wins: 0
+                Losses: 0""";
+
+        assertEquals(expected, getAllPokemon());
+    }
+
+    @Test
+    void testPrintMenu(){
+        String expected = """
+                
+                ********************
+                
+                \tPOKEMON TRACKER
+                
+                Add Data
+                1) add a team
+                2) add a Pokemon to a team with a name, HP (Hit Points),
+                   Attack value, type, and second type (optional)
+                
+                Add Pokemon Data
+                3) add a move to a Pokemon (max. 1)
+                4) add an item to a Pokemon (max. 1)
+                5) add a win to a Pokemon
+                6) add a loss to a Pokemon
+                
+                Output General
+                7) list all Pokemon
+                
+                Output Special
+                8) list the top 3 Pokemon with the highest Attack
+                9) list the top 3 Pokemon with the highest HP
+                10) get the average Attack of all Pokemon
+                11) list all Pokemon of a certain type
+                
+                Save Data
+                12) Load data from a file
+                13) Write data to a file
+                """;
+        assertEquals(expected, getMenu());
+    }
+
+    @Test
+    void testGetAvgAtk(){
+        Team team = new Team();
+        Team teamTwo = new Team();
+        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+
+        team.addPokemon(aron);
+        teamTwo.addPokemon(pidgey);
+
+        Tracker.teams.add(team);
+        Tracker.teams.add(teamTwo);
+
+        String expected = "\nThe average attack value of all Pokemon in the Tracker is: " + 25 + " ATK.";
+        String actual = "\nThe average attack value of all Pokemon in the Tracker is: " + getAvgAtk() + " ATK.";
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void testReadFile(){
+        //simply need to test that something exists when reading the file
+        // for a more accurate test, run Tracker.java and then try importing
+        Tracker.readFile("Tracker.csv");
+        assertNotEquals(null, Tracker.teams);
+    }
+
+    @Test
+    void testWriteFile(){
+        Team team = new Team();
+        Team teamTwo = new Team();
+        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+
+        team.addPokemon(aron);
+        teamTwo.addPokemon(pidgey);
+        //testing team
+        Tracker.teams.add(team);
+        Tracker.teams.add(teamTwo);
+
+        Tracker.writeFile("testing.csv");
+        Tracker.readFile("testing.csv"); // write file then read said file to make sure it is not empty
+        assertNotEquals(null, Tracker.teams);
+    }
 
     /**
      * Tests done by Hasan Salhi.
