@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2.1 - March 22, 2025
  */
 public class Tracker {
-    private static ArrayList<Team> teams = new ArrayList<>();
+    protected static ArrayList<Team> teams = new ArrayList<>();
 
     /**
      * Adds a Team to the Tracker.
@@ -280,8 +280,10 @@ public class Tracker {
      * Done by Jordan Tran.
      */
     public static void writeFile(String fileName){
+        String srcPath = new File("src").getAbsolutePath();
+        String filePath = srcPath + "/" + fileName; // Ensure correct path
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(fileName))); // making a bufferedWriter
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath))); // making a bufferedWriter
             for(Team team : teams){ // looping through teams list
                 ArrayList<Pokemon> pokemon = team.getPokemon(); // get arraylist of Pokemon
                 int teamNumber = team.getNumber(); // get teamNumber integer
