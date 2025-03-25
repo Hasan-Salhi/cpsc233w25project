@@ -75,6 +75,14 @@ public class Team {
     }
 
     /**
+     * Compares the team number
+     * Used in TrackerTest class
+     * Done by Hasan Salhi
+     */
+    /*@Override
+    public boolean equals() {}*/
+
+    /**
      * Resets the number of total teams.
      * Used in the TrackerTest class.
      * Done by Jade Torres.

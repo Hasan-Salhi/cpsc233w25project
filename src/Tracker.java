@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @version 2.1 - March 22, 2025
  */
 public class Tracker {
-    private static ArrayList<Team> teams = new ArrayList<>();
+    protected static ArrayList<Team> teams = new ArrayList<>();
 
     /**
      * Adds a Team to the Tracker.
@@ -62,13 +62,13 @@ public class Tracker {
             allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameHP);
 
-            return "\nHighest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP" + "\nSecond: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP";
+            return "Highest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP" + "\nSecond: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP";
         } else {
 
             //Sorts them according to attack
             allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameHP);
-            top3.append("\nHighest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP");
+            top3.append("Highest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP");
             top3.append("\nSecond: ").append(allPokemonNameHP.get(1).get(0)).append(" with ").append(allPokemonNameHP.get(1).get(1)).append(" HP");
             top3.append("\nThird: ").append(allPokemonNameHP.get(2).get(0)).append(" with ").append(allPokemonNameHP.get(2).get(1)).append(" HP");
 
@@ -107,7 +107,7 @@ public class Tracker {
             //Sorts them according to attack
             allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameAttack);
-            top3.append("\nHighest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack");
+            top3.append("Highest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack");
             top3.append("\nSecond: ").append(allPokemonNameAttack.get(1).get(0)).append(" with ").append(allPokemonNameAttack.get(1).get(1)).append(" Attack");
             top3.append("\nThird: ").append(allPokemonNameAttack.get(2).get(0)).append(" with ").append(allPokemonNameAttack.get(2).get(1)).append(" Attack");
 
@@ -137,7 +137,7 @@ public class Tracker {
 
         //Appends all names to StringBuilder in a list manner
         for (String pokemonName : allPokemonNameType) {
-            pokemonCommonType.append("\n").append(pokemonName);
+            pokemonCommonType.append(pokemonName).append("\n");
         }
 
         return pokemonCommonType.toString();
