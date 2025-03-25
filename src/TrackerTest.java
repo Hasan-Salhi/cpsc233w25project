@@ -346,5 +346,55 @@ public class TrackerTest extends Tracker {
      * Tests done by Hasan Salhi.
      */
 
-    //TODO: ADD TESTS
+    @Test
+    void addTeamTest() {
+        ArrayList<Team> expectedList = new ArrayList<>();
+        expectedList.add(new Team());
+        int expected = expectedList.getFirst().getNumber();
+        Team.resetTotal();
+        Tracker.addTeam();
+        int actual = Tracker.teams.getFirst().getNumber();
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void testTopHP() {
+        Tracker.addTeam();
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+
+        String expected = "Highest: Charizard with 40 HP\nSecond: Squirtle with 25 HP\nThird: Charmander with 20 HP";
+        String actual = Tracker.getTopHP();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testTopAtk() {
+        Tracker.addTeam();
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+
+        String expected = "Highest: Charizard with 20 Attack\nSecond: Pikachu with 20 Attack\nThird: Charmander with 10 Attack";
+        String actual = Tracker.getTopAttack();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testAllType() {
+        Tracker.addTeam();
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+
+        String expected = "Charmander\nCharizard\n";
+        String actual = Tracker.getAllType(Type.FIRE);
+        assertEquals(expected, actual);
+    }
+
+
 }

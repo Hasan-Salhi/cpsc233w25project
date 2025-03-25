@@ -62,13 +62,13 @@ public class Tracker {
             allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameHP);
 
-            return "\nHighest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP" + "\nSecond: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP";
+            return "Highest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP" + "\nSecond: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP";
         } else {
 
             //Sorts them according to attack
             allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameHP);
-            top3.append("\nHighest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP");
+            top3.append("Highest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP");
             top3.append("\nSecond: ").append(allPokemonNameHP.get(1).get(0)).append(" with ").append(allPokemonNameHP.get(1).get(1)).append(" HP");
             top3.append("\nThird: ").append(allPokemonNameHP.get(2).get(0)).append(" with ").append(allPokemonNameHP.get(2).get(1)).append(" HP");
 
@@ -107,7 +107,7 @@ public class Tracker {
             //Sorts them according to attack
             allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
             Collections.reverse(allPokemonNameAttack);
-            top3.append("\nHighest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack");
+            top3.append("Highest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack");
             top3.append("\nSecond: ").append(allPokemonNameAttack.get(1).get(0)).append(" with ").append(allPokemonNameAttack.get(1).get(1)).append(" Attack");
             top3.append("\nThird: ").append(allPokemonNameAttack.get(2).get(0)).append(" with ").append(allPokemonNameAttack.get(2).get(1)).append(" Attack");
 
@@ -137,7 +137,7 @@ public class Tracker {
 
         //Appends all names to StringBuilder in a list manner
         for (String pokemonName : allPokemonNameType) {
-            pokemonCommonType.append("\n").append(pokemonName);
+            pokemonCommonType.append(pokemonName).append("\n");
         }
 
         return pokemonCommonType.toString();
@@ -269,6 +269,7 @@ public class Tracker {
                     }
                 }
             }
+            br.close();
             System.out.println("\nData imported successfully.");
         }catch (IOException e){
             System.out.println("\nError reading file " + e);
@@ -293,8 +294,8 @@ public class Tracker {
                     bw.write(toWrite.getPokemon()); // using the humble for loop to write all pokemon in a team
                     bw.newLine(); // new line for each pokemon
                 }
-
             }
+            bw.close();
             System.out.println("\nFile written successfully.");
         }catch(IOException e){
             System.out.println("\nError writing file " + e);
