@@ -1,30 +1,35 @@
+package Pokemon;
+
+import Type.Type;
+import java.awt.*;
+
 /**
- * CPSC 233 W25 Project Pokemon Class
- * A class for holding Pokemon objects.
+ * CPSC 233 W25 Project Pokemon.Pokemon Class
+ * A class for holding Pokemon.Pokemon objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 1.2 - March 24, 2025
  */
-public class Pokemon {
-    private String name;
-    private int hp;
-    private int attack;
-    private Type typeOne;
-    private Type typeTwo;
-    private String move;
-    private String item;
-    private int wins = 0;
-    private int losses = 0;
+public abstract class Pokemon {
+    protected String name;
+    protected int hp;
+    protected int attack;
+    protected Type typeOne;
+    protected Type typeTwo;
+    protected String move;
+    protected String item;
+    protected int wins = 0;
+    protected int losses = 0;
 
     /**
-     * Constructs a new Pokemon object.
+     * Constructs a new Pokemon.Pokemon object.
      * Done by Jade Torres.
      *
-     * @param name, the name of the Pokemon.
-     * @param hp, the HP of the Pokemon.
-     * @param attack, the attack value of the Pokemon.
-     * @param typeOne, the type of the Pokemon.
-     * @param typeTwo, the second type of the Pokemon (null if none).
+     * @param name, the name of the Pokemon.Pokemon.
+     * @param hp, the HP of the Pokemon.Pokemon.
+     * @param attack, the attack value of the Pokemon.Pokemon.
+     * @param typeOne, the type of the Pokemon.Pokemon.
+     * @param typeTwo, the second type of the Pokemon.Pokemon (null if none).
      */
     public Pokemon(String name, int hp, int attack, Type typeOne, Type typeTwo) {
         this.name = name;
@@ -91,7 +96,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the name a Pokemon has.
+     * Returns the name a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field name.
@@ -101,7 +106,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the HP a Pokemon has.
+     * Returns the HP a Pokemon.Pokemon has.
      * Done by Hasan SaLhi.
      *
      * @return field hp.
@@ -111,7 +116,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the attack value a Pokemon has.
+     * Returns the attack value a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field attack.
@@ -121,7 +126,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the first Type a Pokemon has.
+     * Returns the first Type.Type a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field typeOne.
@@ -131,7 +136,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the second Type a Pokemon has.
+     * Returns the second Type.Type a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field typeTwo.
@@ -141,7 +146,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the move a Pokemon has.
+     * Returns the move a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field move.
@@ -154,7 +159,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the item a Pokemon has.
+     * Returns the item a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field item.
@@ -167,7 +172,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the number of wins a Pokemon has.
+     * Returns the number of wins a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field wins.
@@ -177,7 +182,7 @@ public class Pokemon {
     }
 
     /**
-     * Returns the number of losses a Pokemon has.
+     * Returns the number of losses a Pokemon.Pokemon has.
      * Done by Hasan Salhi.
      *
      * @return field losses.
@@ -185,7 +190,7 @@ public class Pokemon {
     public int getLosses() {return this.losses;}
 
     /**
-     * Converts any given Pokemon object into CSV format for file writing
+     * Converts any given Pokemon.Pokemon object into CSV format for file writing
      * Done by Jordan Tran.
      */
     public String getPokemon(){
@@ -204,10 +209,10 @@ public class Pokemon {
     }
 
     /**
-     * Returns a String representation of a Pokemon.
+     * Returns a String representation of a Pokemon.Pokemon.
      * Done by Jade Torres.
      *
-     * @return a String containing all fields in a Pokemon object.
+     * @return a String containing all fields in a Pokemon.Pokemon object.
      */
     @Override
     public String toString() {
@@ -225,4 +230,23 @@ public class Pokemon {
 
         return statistics.toString();
     }
+
+    /**
+     * description of the Pokemons attack
+     */
+    public abstract void useMove();
+
+    /**
+     * effectiveness of moves based on typing
+     * @return an integer signifying the boost moves of a certain type get
+     */
+    public abstract int getSTAB();
+
+    /**
+     * types that said pokemon are weak to
+     * @return a string with pokemon weaknesses
+     */
+    public abstract String getTypeWeakness();
+
+
 }

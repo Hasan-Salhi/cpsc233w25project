@@ -1,3 +1,7 @@
+import Pokemon.*;
+
+import Type.Type;
+
 import java.util.Collections;
 import java.io.*;
 import java.util.Scanner;
@@ -5,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * CPSC 233 W25 Project Tracker Class
- * A class for tracking Pokemon statistics.
+ * A class for tracking Pokemon.Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 2.1 - March 22, 2025
@@ -23,10 +27,10 @@ public class Tracker {
     }
 
     /**
-     * Returns all Pokemon from all Teams.
+     * Returns all Pokemon.Pokemon from all Teams.
      * Done by Jordan Tran.
      *
-     * @return a String containing all Pokemon from all Teams.
+     * @return a String containing all Pokemon.Pokemon from all Teams.
      */
     public static String getAllPokemon() {
         StringBuilder toReturn = new StringBuilder();
@@ -38,16 +42,16 @@ public class Tracker {
     }
 
     /**
-     * Returns the top 3 Pokemon with the highest HP.
+     * Returns the top 3 Pokemon.Pokemon with the highest HP.
      * Done by Hasan Salhi.
      *
-     * @return a String containing the top 3 Pokemon with the highest HP.
+     * @return a String containing the top 3 Pokemon.Pokemon with the highest HP.
      */
     public static String getTopHP() {
         StringBuilder top3 = new StringBuilder();
         ArrayList<ArrayList<Object>> allPokemonNameHP = new ArrayList<>();
 
-        //Puts all Pokemon names and their attack into a 2D arraylist
+        //Puts all Pokemon.Pokemon names and their attack into a 2D arraylist
         for (Team team : teams) {
             for (Pokemon pokemon : team.getPokemon()) {
                 ArrayList<Object> currentPokemon = new ArrayList<>();
@@ -77,16 +81,16 @@ public class Tracker {
     }
 
     /**
-     * Returns the top 3 Pokemon with the highest attack.
+     * Returns the top 3 Pokemon.Pokemon with the highest attack.
      * Done by Hasan Salhi.
      *
-     * @return a String containing the top 3 Pokemon with the highest attack.
+     * @return a String containing the top 3 Pokemon.Pokemon with the highest attack.
      */
     public static String getTopAttack() {
         StringBuilder top3 = new StringBuilder();
         ArrayList<ArrayList<Object>> allPokemonNameAttack = new ArrayList<>();
 
-        //Puts all Pokemon names and their attack into a 2D arraylist
+        //Puts all Pokemon.Pokemon names and their attack into a 2D arraylist
         for (Team team : teams) {
             for (Pokemon pokemon : team.getPokemon()) {
                 ArrayList<Object> currentPokemon = new ArrayList<>();
@@ -116,17 +120,17 @@ public class Tracker {
     }
 
     /**
-     * Returns all Pokemon with the same Type.
+     * Returns all Pokemon.Pokemon with the same Type.Type.
      * Done by Hasan Salhi.
      *
-     * @param type, the Type to search for.
-     * @return a String containing the all Pokemon with the same Type.
+     * @param type, the Type.Type to search for.
+     * @return a String containing the all Pokemon.Pokemon with the same Type.Type.
      */
     public static String getAllType(Type type) {
         StringBuilder pokemonCommonType = new StringBuilder();
         ArrayList<String> allPokemonNameType = new ArrayList<>();
 
-        //Adds Pokemon name to arraylist of name if one of types is matching
+        //Adds Pokemon.Pokemon name to arraylist of name if one of types is matching
         for (Team team : teams) {
             for (Pokemon pokemon : team.getPokemon()) {
                 if (pokemon.getTypeOne().equals(type) || pokemon.getTypeTwo().equals(type)) {
@@ -144,7 +148,7 @@ public class Tracker {
     }
 
     /**
-     * Returns average attack of all Pokemon.
+     * Returns average attack of all Pokemon.Pokemon.
      * Done by Hasan Salhi.
      *
      * @return average attack value for all pokemon.
@@ -201,23 +205,23 @@ public class Tracker {
                 
                 Add Data
                 1) add a team
-                2) add a Pokemon to a team with a name, HP (Hit Points),
+                2) add a Pokemon.Pokemon to a team with a name, HP (Hit Points),
                    Attack value, type, and second type (optional)
                 
-                Add Pokemon Data
-                3) add a move to a Pokemon (max. 1)
-                4) add an item to a Pokemon (max. 1)
-                5) add a win to a Pokemon
-                6) add a loss to a Pokemon
+                Add Pokemon.Pokemon Data
+                3) add a move to a Pokemon.Pokemon (max. 1)
+                4) add an item to a Pokemon.Pokemon (max. 1)
+                5) add a win to a Pokemon.Pokemon
+                6) add a loss to a Pokemon.Pokemon
                 
                 Output General
-                7) list all Pokemon
+                7) list all Pokemon.Pokemon
                 
                 Output Special
-                8) list the top 3 Pokemon with the highest Attack
-                9) list the top 3 Pokemon with the highest HP
-                10) get the average Attack of all Pokemon
-                11) list all Pokemon of a certain type
+                8) list the top 3 Pokemon.Pokemon with the highest Attack
+                9) list the top 3 Pokemon.Pokemon with the highest HP
+                10) get the average Attack of all Pokemon.Pokemon
+                11) list all Pokemon.Pokemon of a certain type
                 
                 Save Data
                 12) Load data from a file
@@ -253,18 +257,20 @@ public class Tracker {
             for(String[] currentLine : lineValues){ // looping through arraylist of data
                 for (Team team : teams) {
                     if (team.getNumber() == Integer.parseInt(currentLine[0])) {
-                        String name = currentLine[1]; // turning data into Pokemon attributes
+                        String name = currentLine[1]; // turning data into Pokemon.Pokemon attributes
                         int hp = Integer.parseInt(currentLine[2]);
                         int atk = Integer.parseInt(currentLine[3]);
-                        Type typeOne = Type.valueOf(currentLine[4]);
-                        Type typeTwo = Type.valueOf(currentLine[5]);
+                        String typeOne = (currentLine[4]);
+                        String typeTwo = (currentLine[5]);
 
-                        Pokemon toAdd = new Pokemon(name, hp, atk, typeOne, typeTwo); // making pokemon
-                        toAdd.addMove(currentLine[6]);
-                        toAdd.addItem(currentLine[7]);
-                        toAdd.setWins(Integer.parseInt(currentLine[8])); // setting secondary parameters
-                        toAdd.setLosses(Integer.parseInt(currentLine[9]));
+                        Pokemon toAdd = createPokemon(name, hp, atk, typeOne, typeTwo); // making pokemon
 
+                        if(toAdd != null) {
+                            toAdd.addMove(currentLine[6]);
+                            toAdd.addItem(currentLine[7]);
+                            toAdd.setWins(Integer.parseInt(currentLine[8])); // setting secondary parameters
+                            toAdd.setLosses(Integer.parseInt(currentLine[9]));
+                        }
                         team.addPokemon(toAdd); // add said pokemon
                     }
                 }
@@ -286,7 +292,7 @@ public class Tracker {
         try{
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath))); // making a bufferedWriter
             for(Team team : teams){ // looping through teams list
-                ArrayList<Pokemon> pokemon = team.getPokemon(); // get arraylist of Pokemon
+                ArrayList<Pokemon> pokemon = team.getPokemon(); // get arraylist of Pokemon.Pokemon
                 int teamNumber = team.getNumber(); // get teamNumber integer
 
                 for(Pokemon toWrite : pokemon){
@@ -313,6 +319,62 @@ public class Tracker {
         teams.clear();
     }
 
+
+    /**
+     * makes a pokemon of certain child class of Pokemon
+     * @param name name
+     * @param hp hp
+     * @param atk atk
+     * @param primType primary and prioritized type for the subclass
+     * @param secType secondary typing
+     * @return
+     */
+    public static Pokemon createPokemon(String name, int hp, int atk, String primType, String secType){
+        Type typeOne = Type.valueOf(primType.toUpperCase()); // .valueOf is case-sensitive so we need to turn input to uppercase
+        Type typeTwo = Type.valueOf(secType.toUpperCase());
+        Pokemon toAdd = new BugPokemon(name,hp,atk,typeOne,typeTwo);
+
+        //switch case for the very very many pokemon types
+        switch(typeOne){
+            case BUG -> {
+                return new BugPokemon(name,hp,atk,typeOne,typeTwo);
+            }case DARK ->{
+                return new DarkPokemon(name,hp,atk,typeOne,typeTwo);
+            }case DRAGON ->{
+                return new DragonPokemon(name,hp,atk,typeOne,typeTwo);
+            }case ELECTRIC -> {
+                return new ElectricPokemon(name,hp,atk,typeOne,typeTwo);
+            }case FAIRY ->{
+                return new FairyPokemon(name,hp,atk,typeOne,typeTwo);
+            }case FIGHTING ->{
+                return new FightingPokemon(name,hp,atk,typeOne,typeTwo);
+            }case FIRE -> {
+                return new FirePokemon(name,hp,atk,typeOne,typeTwo);
+            }case FLYING ->{
+                return new FlyingPokemon(name,hp,atk,typeOne,typeTwo);
+            }case GHOST ->{
+                return new GhostPokemon(name,hp,atk,typeOne,typeTwo);
+            }case GRASS -> {
+                return new GrassPokemon(name,hp,atk,typeOne,typeTwo);
+            }case GROUND ->{
+                return new GroundPokemon(name,hp,atk,typeOne,typeTwo);
+            }case ICE ->{
+                return new IcePokemon(name,hp,atk,typeOne,typeTwo);
+            }case NORMAL -> {
+                return new NormalPokemon(name,hp,atk,typeOne,typeTwo);
+            }case PSYCHIC ->{
+                return new PsychicPokemon(name,hp,atk,typeOne,typeTwo);
+            }case ROCK ->{
+                return new RockPokemon(name,hp,atk,typeOne,typeTwo);
+            }case STEEL ->{
+                return new SteelPokemon(name,hp,atk,typeOne,typeTwo);
+            }
+        }
+
+        return null;
+    }
+
+
     /**
      * The main method for running the Tracker.
      * Done by Jordan Tran.
@@ -333,9 +395,9 @@ public class Tracker {
                     break;
                 case 2: {
                     if (teams.isEmpty()) { // make sure teams is not empty
-                        System.out.println("\nThere are no teams to add a Pokemon to!");
+                        System.out.println("\nThere are no teams to add a Pokemon.Pokemon to!");
                     } else {
-                        System.out.println("\nWhat team number would you like to add a Pokemon to?");
+                        System.out.println("\nWhat team number would you like to add a Pokemon.Pokemon to?");
                         int teamChoice = scan.nextInt();
                         if (teamChoice > teams.size() || teamChoice < 1) { // account for teams starting at 1
                             System.out.println("\nThat team does not exist!");
@@ -343,26 +405,25 @@ public class Tracker {
                             //actual process of adding a pokemon starts here
                             scan.nextLine(); //"Fake" input to parse out the extra \n when the user presses enter.
 
-                            System.out.println("\nEnter the Pokemon's name:");
+                            System.out.println("\nEnter the Pokemon.Pokemon's name:");
                             String name = scan.nextLine();
-                            System.out.println("\nEnter the Pokemon's HP:");
+                            System.out.println("\nEnter the Pokemon.Pokemon's HP:");
                             int hp = scan.nextInt();
-                            System.out.println("\nEnter the Pokemon's Attack value:");
+                            System.out.println("\nEnter the Pokemon.Pokemon's Attack value:");
                             int attack = scan.nextInt();
 
                             //"Fake" input to parse out the extra \n when the user presses enter.
                             scan.nextLine();
 
-                            System.out.println("\nEnter the Pokemon's type:");
+                            System.out.println("\nEnter the Pokemon.Pokemon's type:");
                             String testOne = scan.nextLine();
-                            System.out.println("\nEnter the Pokemon's second type (if not applicable, enter \"none\"):");
+                            System.out.println("\nEnter the Pokemon.Pokemon's second type (if not applicable, enter \"none\"):");
                             String testTwo = scan.nextLine(); // grabbing string inputs to check
 
                             if(checkEnum(testOne) && checkEnum(testTwo)){ // checking valid type input
-                                Type typeOne = Type.valueOf(testOne.toUpperCase()); // .valueOf is case-sensitive so we need to turn input to uppercase
-                                Type typeTwo = Type.valueOf(testTwo.toUpperCase());
+
                                 // grab pokemon info and turn it into a pokemon
-                                Pokemon toAdd = new Pokemon(name, hp, attack, typeOne, typeTwo);
+                                Pokemon toAdd = createPokemon(name, hp, attack, testOne, testTwo);
 
                                 for (Team team : teams) {
                                     if (team.getNumber() == teamChoice) {
@@ -382,7 +443,7 @@ public class Tracker {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
-                    System.out.println("\nEnter a Pokemon:");
+                    System.out.println("\nEnter a Pokemon.Pokemon:");
                     String pokemon = scan.nextLine();
                     System.out.println("\nEnter a move:");
                     String move = scan.nextLine();
@@ -397,7 +458,7 @@ public class Tracker {
                         }
                     }
                     if (!addMove) {
-                        System.out.println("\nPokemon does not exist!");
+                        System.out.println("\nPokemon.Pokemon does not exist!");
                     }
                     break;
                 }
@@ -407,7 +468,7 @@ public class Tracker {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
-                    System.out.println("\nEnter a Pokemon:");
+                    System.out.println("\nEnter a Pokemon.Pokemon:");
                     String pokemonItem = scan.nextLine();
                     System.out.println("\nEnter a move:");
                     String item = scan.nextLine();
@@ -423,7 +484,7 @@ public class Tracker {
                         }
                     }
                     if (!addItem) {
-                        System.out.println("\nPokemon does not exist!");
+                        System.out.println("\nPokemon.Pokemon does not exist!");
                     }
                     break;
                 }
@@ -433,7 +494,7 @@ public class Tracker {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
-                    System.out.println("\nEnter a Pokemon:");
+                    System.out.println("\nEnter a Pokemon.Pokemon:");
                     String pokemon = scan.nextLine();
 
                     boolean addWin = false; // boolean to check if a move was added
@@ -448,7 +509,7 @@ public class Tracker {
                         }
                     }
                     if (!addWin) {
-                        System.out.println("\nPokemon does not exist!");
+                        System.out.println("\nPokemon.Pokemon does not exist!");
                     }
 
                     break;
@@ -459,7 +520,7 @@ public class Tracker {
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
 
-                    System.out.println("\nEnter a Pokemon:");
+                    System.out.println("\nEnter a Pokemon.Pokemon:");
                     String pokemon = scan.nextLine();
 
                     boolean addLoss = false; // boolean to check if a move was added
@@ -474,7 +535,7 @@ public class Tracker {
                         }
                     }
                     if (!addLoss) {
-                        System.out.println("\nPokemon does not exist!");
+                        System.out.println("\nPokemon.Pokemon does not exist!");
                     }
                     break;
                 }
@@ -496,7 +557,7 @@ public class Tracker {
                 }
 
                 case 10: {
-                    System.out.println("\nThe average attack value of all Pokemon in the Tracker is: " + getAvgAtk() + " ATK.");
+                    System.out.println("\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + getAvgAtk() + " ATK.");
                     break;
                 }
 

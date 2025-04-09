@@ -1,3 +1,5 @@
+import Pokemon.Pokemon;
+
 import java.util.ArrayList;
 
 /**
@@ -23,10 +25,10 @@ public class Team {
     }
 
     /**
-     * Adds a Pokemon to a Team.
+     * Adds a Pokemon.Pokemon to a Team.
      * Done by Hasan Salhi.
      *
-     * @param pokemon, the Pokemon to be added.
+     * @param pokemon, the Pokemon.Pokemon to be added.
      */
     public void addPokemon(Pokemon pokemon) {
         this.pokemon.add(pokemon);
@@ -43,7 +45,7 @@ public class Team {
     }
 
     /**
-     * Returns the ArrayList of a certain team's Pokemon.
+     * Returns the ArrayList of a certain team's Pokemon.Pokemon.
      * Done by Jordan Tran.
      *
      * @return list of pokemon.

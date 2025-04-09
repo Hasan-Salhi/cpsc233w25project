@@ -1,16 +1,15 @@
+import Pokemon.*;
+import Type.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
-import java.io.*;
 
 /**
  * CPSC 233 W25 Project TrackerTest Class
- * A class for testing the Tracker, Team, and Pokemon classes.
+ * A class for testing the Tracker, Team, and Pokemon.Pokemon classes.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 2.0 - March 18, 2025
@@ -31,7 +30,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getName() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
 
         String expected = "Pikachu";
         String actual = pikachu.getName();
@@ -40,7 +39,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getHP() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
 
         int expected = 10;
         int actual = pikachu.getHP();
@@ -49,7 +48,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getAttack() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
 
         int expected = 20;
         int actual = pikachu.getAttack();
@@ -58,7 +57,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getTypeOne() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
 
         Type expected = Type.ELECTRIC;
         Type actual = pikachu.getTypeOne();
@@ -67,7 +66,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getTypeTwo() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
 
         Type expected = Type.NONE;
         Type actual = pikachu.getTypeTwo();
@@ -76,7 +75,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getMove() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
         pikachu.addMove("Tackle");
         pikachu.addMove("Charge");
 
@@ -87,7 +86,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getItem() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
         pikachu.addItem("Big Root");
         pikachu.addItem("Bug Gem");
 
@@ -98,7 +97,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getWins() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
         pikachu.addWin();
         pikachu.addWin();
         pikachu.addWin();
@@ -110,7 +109,7 @@ public class TrackerTest extends Tracker {
 
     @Test
     void getLosses() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
         pikachu.addLoss();
         pikachu.addLoss();
 
@@ -121,14 +120,14 @@ public class TrackerTest extends Tracker {
 
     @Test
     void pokemonToString() {
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
         pikachu.addMove("Charge");
         pikachu.addItem("Bug Gem");
         pikachu.addWin();
         pikachu.addWin();
 
         String expected = """
-                Pokemon: Pikachu
+                Pokemon.Pokemon: Pikachu
                 HP: 10
                 Attack: 20
                 Type: ELECTRIC
@@ -155,9 +154,9 @@ public class TrackerTest extends Tracker {
     @Test
     void getPokemon() {
         Team team = new Team();
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
-        Pokemon squirtle = new Pokemon("Squirtle", 10, 10, Type.WATER, Type.NONE);
-        Pokemon charmander = new Pokemon("Charmander", 10, 10, Type.FIRE, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 10, Type.ELECTRIC, Type.NONE);
+        Pokemon squirtle = new WaterPokemon("Squirtle", 10, 10, Type.WATER, Type.NONE);
+        Pokemon charmander = new FirePokemon("Charmander", 10, 10, Type.FIRE, Type.NONE);
         team.addPokemon(pikachu);
         team.addPokemon(squirtle);
         team.addPokemon(charmander);
@@ -173,8 +172,8 @@ public class TrackerTest extends Tracker {
     @Test
     void teamToString() {
         Team team = new Team();
-        Pokemon pikachu = new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
-        Pokemon squirtle = new Pokemon("Squirtle", 20, 10, Type.WATER, Type.NONE);
+        Pokemon pikachu = new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE);
+        Pokemon squirtle = new WaterPokemon("Squirtle", 20, 10, Type.WATER, Type.NONE);
         team.addPokemon(pikachu);
         team.addPokemon(squirtle);
         pikachu.addMove("Charge");
@@ -190,7 +189,7 @@ public class TrackerTest extends Tracker {
                 
                 \tTEAM #1
                 
-                Pokemon: Pikachu
+                Pokemon.Pokemon: Pikachu
                 HP: 10
                 Attack: 20
                 Type: ELECTRIC
@@ -200,7 +199,7 @@ public class TrackerTest extends Tracker {
                 Wins: 2
                 Losses: 0
                 
-                Pokemon: Squirtle
+                Pokemon.Pokemon: Squirtle
                 HP: 20
                 Attack: 10
                 Type: WATER
@@ -221,8 +220,8 @@ public class TrackerTest extends Tracker {
     void testGetAllPokemon(){
         Team team = new Team();
         Team teamTwo = new Team();
-        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
-        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+        Pokemon aron = new SteelPokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new NormalPokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
 
         team.addPokemon(aron);
         teamTwo.addPokemon(pidgey);
@@ -236,7 +235,7 @@ public class TrackerTest extends Tracker {
                 
                 \tTEAM #1
                 
-                Pokemon: Aron
+                Pokemon.Pokemon: Aron
                 HP: 50
                 Attack: 30
                 Type: STEEL
@@ -249,7 +248,7 @@ public class TrackerTest extends Tracker {
                 
                 \tTEAM #2
                 
-                Pokemon: Pidgey
+                Pokemon.Pokemon: Pidgey
                 HP: 50
                 Attack: 20
                 Type: NORMAL
@@ -272,23 +271,23 @@ public class TrackerTest extends Tracker {
                 
                 Add Data
                 1) add a team
-                2) add a Pokemon to a team with a name, HP (Hit Points),
+                2) add a Pokemon.Pokemon to a team with a name, HP (Hit Points),
                    Attack value, type, and second type (optional)
                 
-                Add Pokemon Data
-                3) add a move to a Pokemon (max. 1)
-                4) add an item to a Pokemon (max. 1)
-                5) add a win to a Pokemon
-                6) add a loss to a Pokemon
+                Add Pokemon.Pokemon Data
+                3) add a move to a Pokemon.Pokemon (max. 1)
+                4) add an item to a Pokemon.Pokemon (max. 1)
+                5) add a win to a Pokemon.Pokemon
+                6) add a loss to a Pokemon.Pokemon
                 
                 Output General
-                7) list all Pokemon
+                7) list all Pokemon.Pokemon
                 
                 Output Special
-                8) list the top 3 Pokemon with the highest Attack
-                9) list the top 3 Pokemon with the highest HP
-                10) get the average Attack of all Pokemon
-                11) list all Pokemon of a certain type
+                8) list the top 3 Pokemon.Pokemon with the highest Attack
+                9) list the top 3 Pokemon.Pokemon with the highest HP
+                10) get the average Attack of all Pokemon.Pokemon
+                11) list all Pokemon.Pokemon of a certain type
                 
                 Save Data
                 12) Load data from a file
@@ -301,8 +300,8 @@ public class TrackerTest extends Tracker {
     void testGetAvgAtk(){
         Team team = new Team();
         Team teamTwo = new Team();
-        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
-        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+        Pokemon aron = new SteelPokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new NormalPokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
 
         team.addPokemon(aron);
         teamTwo.addPokemon(pidgey);
@@ -310,8 +309,8 @@ public class TrackerTest extends Tracker {
         Tracker.teams.add(team);
         Tracker.teams.add(teamTwo);
 
-        String expected = "\nThe average attack value of all Pokemon in the Tracker is: " + 25 + " ATK.";
-        String actual = "\nThe average attack value of all Pokemon in the Tracker is: " + getAvgAtk() + " ATK.";
+        String expected = "\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + 25 + " ATK.";
+        String actual = "\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + getAvgAtk() + " ATK.";
 
         assertEquals(expected,actual);
     }
@@ -328,8 +327,8 @@ public class TrackerTest extends Tracker {
     void testWriteFile(){
         Team team = new Team();
         Team teamTwo = new Team();
-        Pokemon aron = new Pokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
-        Pokemon pidgey = new Pokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
+        Pokemon aron = new SteelPokemon("Aron", 50, 30, Type.STEEL, Type.ROCK);
+        Pokemon pidgey = new NormalPokemon("Pidgey", 50, 20, Type.NORMAL, Type.FLYING);
 
         team.addPokemon(aron);
         teamTwo.addPokemon(pidgey);
@@ -360,10 +359,10 @@ public class TrackerTest extends Tracker {
     @Test
     void testTopHP() {
         Tracker.addTeam();
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+        Tracker.teams.getFirst().addPokemon(new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new WaterPokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
 
         String expected = "Highest: Charizard with 40 HP\nSecond: Squirtle with 25 HP\nThird: Charmander with 20 HP";
         String actual = Tracker.getTopHP();
@@ -373,10 +372,10 @@ public class TrackerTest extends Tracker {
     @Test
     void testTopAtk() {
         Tracker.addTeam();
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+        Tracker.teams.getFirst().addPokemon(new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new WaterPokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
 
         String expected = "Highest: Charizard with 20 Attack\nSecond: Pikachu with 20 Attack\nThird: Charmander with 10 Attack";
         String actual = Tracker.getTopAttack();
@@ -386,10 +385,10 @@ public class TrackerTest extends Tracker {
     @Test
     void testAllType() {
         Tracker.addTeam();
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
-        Tracker.teams.getFirst().addPokemon(new Pokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
+        Tracker.teams.getFirst().addPokemon(new ElectricPokemon("Pikachu", 10, 20, Type.ELECTRIC, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new WaterPokemon("Squirtle", 25, 10, Type.WATER, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charmander", 20, 10, Type.FIRE, Type.NONE));
+        Tracker.teams.getFirst().addPokemon(new FirePokemon("Charizard",40,20,Type.FIRE,Type.DRAGON));
 
         String expected = "Charmander\nCharizard\n";
         String actual = Tracker.getAllType(Type.FIRE);
