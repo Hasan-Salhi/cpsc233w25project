@@ -238,9 +238,9 @@ public abstract class Pokemon {
 
     /**
      * effectiveness of moves based on typing
-     * @return an integer signifying the boost moves of a certain type get
+     * @return a string signifying the boost moves of a certain type get
      */
-    public abstract int getSTAB();
+    public abstract String getSTAB();
 
     /**
      * types that said pokemon are weak to
@@ -248,5 +248,9 @@ public abstract class Pokemon {
      */
     public abstract String getTypeWeakness();
 
-
+    /**
+     * passive of each pokemon type
+     * @return the passive of each pokemon type
+     */
+    public abstract String typePassive();
 }

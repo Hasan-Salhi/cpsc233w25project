@@ -12,12 +12,17 @@ public class PsychicPokemon extends Pokemon{
     }
 
     @Override
-    public int getSTAB() {
-        return 0;
+    public String getSTAB() {
+        return (name + " gets a 1.5x BP buff to moves of " + typeOne + " and " + typeTwo + " typing.");
     }
 
     @Override
     public String getTypeWeakness() {
         return "";
+    }
+
+    @Override
+    public String typePassive() {
+        return "Psychic type Pokemon unfortunately do not have any passives.";
     }
 }

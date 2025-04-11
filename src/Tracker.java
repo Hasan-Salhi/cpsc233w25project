@@ -1,7 +1,7 @@
 import Pokemon.*;
 
 import Type.Type;
-
+import java.util.Comparator;
 import java.util.Collections;
 import java.io.*;
 import java.util.Scanner;
@@ -27,6 +27,34 @@ public class Tracker {
     }
 
     /**
+     * Compares two Pokemon, returning the one with the highest ATK
+     * parameters are simply two Pokemon
+     */
+    public static class AtkComparator implements Comparator<Pokemon>{
+        @Override
+        public int compare(Pokemon p1, Pokemon p2){
+            if((p1 != null) && (p2 != null)) { //ensure not null
+                return Integer.compare(p2.getAttack(), p1.getAttack());
+            }
+            return 0;
+        }
+    }
+
+    /**
+     * Class for comparing the HP of Pokemon.
+     */
+    public static class HpComparator implements Comparator<Pokemon>{
+        @Override
+        public int compare(Pokemon p1, Pokemon p2){
+            if((p1 != null) && (p2 != null)) { //ensure not null
+                return Integer.compare(p2.getHP(), p1.getHP()); // 2nd pokemon goes first to indicate it should go first
+            }
+            return 0; // return 0 as a base because it should theoretically never be a null case
+        }
+    }
+
+
+    /**
      * Returns all Pokemon.Pokemon from all Teams.
      * Done by Jordan Tran.
      *
@@ -49,35 +77,25 @@ public class Tracker {
      */
     public static String getTopHP() {
         StringBuilder top3 = new StringBuilder();
-        ArrayList<ArrayList<Object>> allPokemonNameHP = new ArrayList<>();
+        ArrayList<Pokemon> allPokemon = new ArrayList<>();
 
         //Puts all Pokemon.Pokemon names and their attack into a 2D arraylist
         for (Team team : teams) {
-            for (Pokemon pokemon : team.getPokemon()) {
-                ArrayList<Object> currentPokemon = new ArrayList<>();
-                currentPokemon.add(pokemon.getName());
-                currentPokemon.add(pokemon.getHP());
-                allPokemonNameHP.add(currentPokemon);
-            }
+            allPokemon.addAll(team.getPokemon());
         }
 
-        if (allPokemonNameHP.size() == 1) {return "\nHighest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP";}
-        else if (allPokemonNameHP.size() == 2) {
-            allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-            Collections.reverse(allPokemonNameHP);
+        allPokemon.sort(new HpComparator()); // makes a new hp Comparator
 
-            return "Highest: " + allPokemonNameHP.getFirst().getFirst() + " with " + allPokemonNameHP.getFirst().get(1) + " HP" + "\nSecond: " + allPokemonNameHP.get(1).getFirst() + " with " + allPokemonNameHP.get(1).get(1) + " HP";
-        } else {
-
-            //Sorts them according to attack
-            allPokemonNameHP.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-            Collections.reverse(allPokemonNameHP);
-            top3.append("Highest: ").append(allPokemonNameHP.get(0).get(0)).append(" with ").append(allPokemonNameHP.get(0).get(1)).append(" HP");
-            top3.append("\nSecond: ").append(allPokemonNameHP.get(1).get(0)).append(" with ").append(allPokemonNameHP.get(1).get(1)).append(" HP");
-            top3.append("\nThird: ").append(allPokemonNameHP.get(2).get(0)).append(" with ").append(allPokemonNameHP.get(2).get(1)).append(" HP");
-
-            return top3.toString();
+        if(!allPokemon.isEmpty()){ // ensures not empty
+            top3.append("\nHighest: ").append(allPokemon.getFirst().getName()).append(" with ").append(allPokemon.getFirst().getHP()).append(" HP.");
         }
+        if(allPokemon.size() > 1){ //ensures at least 2 pokemon
+            top3.append("\nSecond: ").append(allPokemon.get(1).getName()).append(" with ").append(allPokemon.get(1).getHP()).append(" HP.");
+        }
+        if(allPokemon.size() > 2){ //ensures all 3 needed pokemon exist
+            top3.append("\nThird: ").append(allPokemon.get(1).getName()).append(" with ").append(allPokemon.get(1).getHP()).append(" HP.");
+        }
+        return top3.toString();
     }
 
     /**
@@ -88,35 +106,25 @@ public class Tracker {
      */
     public static String getTopAttack() {
         StringBuilder top3 = new StringBuilder();
-        ArrayList<ArrayList<Object>> allPokemonNameAttack = new ArrayList<>();
+        ArrayList<Pokemon> allPokemonNameAttack = new ArrayList<>();
 
         //Puts all Pokemon.Pokemon names and their attack into a 2D arraylist
         for (Team team : teams) {
-            for (Pokemon pokemon : team.getPokemon()) {
-                ArrayList<Object> currentPokemon = new ArrayList<>();
-                currentPokemon.add(pokemon.getName());
-                currentPokemon.add(pokemon.getAttack());
-                allPokemonNameAttack.add(currentPokemon);
-            }
+            allPokemonNameAttack.addAll(team.getPokemon());
         }
 
-        if (allPokemonNameAttack.size() == 1) {return "\nHighest: " + allPokemonNameAttack.getFirst().getFirst() + " with " + allPokemonNameAttack.getFirst().get(1) + " Attack";}
-        else if (allPokemonNameAttack.size() == 2) {
-            allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-            Collections.reverse(allPokemonNameAttack);
+        allPokemonNameAttack.sort(new AtkComparator()); // makes a new Atk Comparator
 
-            return "\nHighest: " + allPokemonNameAttack.getFirst().getFirst() + " with " + allPokemonNameAttack.getFirst().get(1) + " Attack" + "\nSecond: " + allPokemonNameAttack.get(1).getFirst() + " with " + allPokemonNameAttack.get(1).get(1) + " Attack";
-        } else {
-
-            //Sorts them according to attack
-            allPokemonNameAttack.sort((o1, o2) -> (Integer) o1.get(1) - (Integer) o2.get(1));
-            Collections.reverse(allPokemonNameAttack);
-            top3.append("Highest: ").append(allPokemonNameAttack.get(0).get(0)).append(" with ").append(allPokemonNameAttack.get(0).get(1)).append(" Attack");
-            top3.append("\nSecond: ").append(allPokemonNameAttack.get(1).get(0)).append(" with ").append(allPokemonNameAttack.get(1).get(1)).append(" Attack");
-            top3.append("\nThird: ").append(allPokemonNameAttack.get(2).get(0)).append(" with ").append(allPokemonNameAttack.get(2).get(1)).append(" Attack");
-
-            return top3.toString();
+        if(!allPokemonNameAttack.isEmpty()){ // only returns 1 if there is a single Pokemon
+            top3.append("\nHighest: ").append(allPokemonNameAttack.getFirst().getName()).append(" with ").append(allPokemonNameAttack.getFirst().getAttack()).append(" ATK.");
         }
+        if(allPokemonNameAttack.size() > 1){
+            top3.append("\nSecond: ").append(allPokemonNameAttack.get(1).getName()).append(" with ").append(allPokemonNameAttack.get(1).getAttack()).append(" ATK.");
+        } // basically just making sure the proper amount of Pokemon exist.
+        if(allPokemonNameAttack.size() > 2){
+            top3.append("\nThird: ").append(allPokemonNameAttack.get(1).getName()).append(" with ").append(allPokemonNameAttack.get(1).getAttack()).append(" ATK.");
+        }
+        return top3.toString();
     }
 
     /**
@@ -205,23 +213,23 @@ public class Tracker {
                 
                 Add Data
                 1) add a team
-                2) add a Pokemon.Pokemon to a team with a name, HP (Hit Points),
+                2) add a Pokemon to a team with a name, HP (Hit Points),
                    Attack value, type, and second type (optional)
                 
-                Add Pokemon.Pokemon Data
-                3) add a move to a Pokemon.Pokemon (max. 1)
-                4) add an item to a Pokemon.Pokemon (max. 1)
-                5) add a win to a Pokemon.Pokemon
-                6) add a loss to a Pokemon.Pokemon
+                Add Pokemon Data
+                3) add a move to a Pokemon (max. 1)
+                4) add an item to a Pokemon (max. 1)
+                5) add a win to a Pokemon
+                6) add a loss to a Pokemon
                 
                 Output General
-                7) list all Pokemon.Pokemon
+                7) list all Pokemon
                 
                 Output Special
-                8) list the top 3 Pokemon.Pokemon with the highest Attack
-                9) list the top 3 Pokemon.Pokemon with the highest HP
-                10) get the average Attack of all Pokemon.Pokemon
-                11) list all Pokemon.Pokemon of a certain type
+                8) list the top 3 Pokemon with the highest Attack
+                9) list the top 3 Pokemon with the highest HP
+                10) get the average Attack of all Pokemon
+                11) list all Pokemon of a certain type
                 
                 Save Data
                 12) Load data from a file
