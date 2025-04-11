@@ -30,18 +30,47 @@ public enum Type {
 
     // block of code that runs on class startup
     static {
+        NORMAL.weaknesses = List.of(FIGHTING);
         FIRE.weaknesses = List.of(WATER, GROUND, ROCK, FIGHTING);
         WATER.weaknesses = List.of(ELECTRIC, GRASS);
-        GRASS.weaknesses = List.of(FIRE, ICE, FLYING, BUG, POISON);
-        FIGHTING.weaknesses = List.of(FLYING, PSYCHIC, FAIRY);
-        GROUND.weaknesses = List.of(WATER, GRASS, ICE);
-        ROCK.weaknesses = List.of(WATER, GRASS, FIGHTING);
         ELECTRIC.weaknesses = List.of(GROUND);
+        GRASS.weaknesses = List.of(FIRE, ICE, FLYING, BUG, POISON);
+        ICE.weaknesses = List.of(FIRE,FIGHTING,STEEL,ROCK);
+        FIGHTING.weaknesses = List.of(FLYING, PSYCHIC, FAIRY);
+        POISON.weaknesses = List.of(GROUND,PSYCHIC);
+        GROUND.weaknesses = List.of(WATER, GRASS, ICE);
+        FLYING.weaknesses = List.of(ICE,ROCK,ELECTRIC);
+        PSYCHIC.weaknesses = List.of(BUG,DARK,GHOST);
+        BUG.weaknesses = List.of(FIRE,FLYING,ROCK);
+        ROCK.weaknesses = List.of(WATER, GRASS, FIGHTING);
+        GHOST.weaknesses = List.of(DARK,GHOST);
+        DRAGON.weaknesses = List.of(FAIRY,ICE,DRAGON);
+        DARK.weaknesses = List.of(FIGHTING,BUG,FAIRY);
+        STEEL.weaknesses = List.of(FIGHTING,FIRE,GROUND);
+        FAIRY.weaknesses = List.of(POISON,STEEL);
         NONE.weaknesses = Collections.emptyList(); // no weaknesses
     }
 
     //also required for resistances
     static{
         NORMAL.resistances = List.of(GHOST);
+        FIRE.resistances = List.of(BUG,FAIRY,FIRE,GRASS,ICE,STEEL);
+        WATER.resistances = List.of(FIRE,ICE,STEEL,WATER);
+        ELECTRIC.resistances = List.of(ELECTRIC,FLYING,STEEL);
+        GRASS.resistances = List.of(ELECTRIC,GRASS,GROUND,WATER);
+        ICE.resistances = List.of(ICE);
+        FIGHTING.resistances = List.of(BUG,DARK,ROCK);
+        POISON.resistances = List.of(BUG,FAIRY,FIGHTING,GRASS,POISON);
+        GROUND.resistances = List.of(POISON,ROCK,ELECTRIC);
+        FLYING.resistances = List.of(BUG,FIGHTING,GRASS,GROUND);
+        PSYCHIC.resistances = List.of(FIGHTING,PSYCHIC);
+        BUG.resistances = List.of(FIGHTING,GRASS,GROUND);
+        ROCK.resistances = List.of(FLYING,FIRE,NORMAL,POISON);
+        GHOST.resistances = List.of(BUG,POISON);
+        DRAGON.resistances = List.of(ELECTRIC,FIRE,GRASS,WATER);
+        DARK.resistances = List.of(DARK,GHOST,PSYCHIC);
+        STEEL.resistances = List.of(BUG,DRAGON,FAIRY,FLYING,GRASS,ICE,NORMAL,PSYCHIC,ROCK,STEEL);
+        FAIRY.resistances = List.of(BUG,DARK,FIGHTING);
+        NONE.resistances = Collections.emptyList(); // no resistances either
     }
 }

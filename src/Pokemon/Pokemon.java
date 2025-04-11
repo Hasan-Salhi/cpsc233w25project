@@ -234,7 +234,7 @@ public abstract class Pokemon {
     /**
      * description of the Pokemons attack
      */
-    public abstract void useMove();
+    public abstract String useMove();
 
     /**
      * effectiveness of moves based on typing

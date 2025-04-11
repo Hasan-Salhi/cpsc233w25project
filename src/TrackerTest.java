@@ -341,6 +341,12 @@ public class TrackerTest extends Tracker {
         assertNotEquals(null, Tracker.teams);
     }
 
+    @Test
+    void testWeaknesses(){
+        Pokemon swampert = new WaterPokemon("Swampert",100,50,Type.WATER,Type.GROUND);
+        assertEquals("4x Weaknesses: GRASS\n", swampert.getTypeWeakness());
+    }
+
     /**
      * Tests done by Hasan Salhi.
      */

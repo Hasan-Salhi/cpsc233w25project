@@ -13,6 +13,7 @@ public class Team {
     private static int totalTeams = 0;
     private int teamNum; // unique number for each team
     private ArrayList<Pokemon> pokemon;
+    private final int maxPokemon = 6; // max 6 pokemon per team
 
     /**
      * Constructs a new Team object.
