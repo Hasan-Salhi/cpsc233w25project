@@ -387,7 +387,7 @@ public class Tracker {
      * The main method for running the Tracker.
      * Done by Jordan Tran.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         Scanner scan = new Scanner(System.in); // make scanner
         int choice;
 
