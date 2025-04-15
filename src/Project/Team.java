@@ -1,10 +1,12 @@
+package Project;
+
 import Pokemon.Pokemon;
 
 import java.util.ArrayList;
 
 /**
- * CPSC 233 W25 Project Team Class
- * A class for holding Team objects.
+ * CPSC 233 W25 Project Project.Team Class
+ * A class for holding Project.Team objects.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 1.2 - March 24, 2025
@@ -16,7 +18,7 @@ public class Team {
     private final int maxPokemon = 6; // max 6 pokemon per team
 
     /**
-     * Constructs a new Team object.
+     * Constructs a new Project.Team object.
      * Done by Jade Torres.
      */
     public Team() {
@@ -26,7 +28,7 @@ public class Team {
     }
 
     /**
-     * Adds a Pokemon.Pokemon to a Team.
+     * Adds a Pokemon.Pokemon to a Project.Team.
      * Done by Hasan Salhi.
      *
      * @param pokemon, the Pokemon.Pokemon to be added.
@@ -36,7 +38,7 @@ public class Team {
     }
 
     /**
-     * Returns the number a Team has.
+     * Returns the number a Project.Team has.
      * Done by Jordan Tran.
      *
      * @return field number.
@@ -56,7 +58,7 @@ public class Team {
     }
 
     /**
-     * Returns a String representation of a Team.
+     * Returns a String representation of a Project.Team.
      * Done by Jade Torres.
      *
      * @return a String containing all elements in field pokemon.

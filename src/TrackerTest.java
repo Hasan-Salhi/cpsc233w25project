@@ -1,4 +1,6 @@
 import Pokemon.*;
+import Project.Team;
+import Project.Tracker;
 import Type.Type;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * CPSC 233 W25 Project TrackerTest Class
- * A class for testing the Tracker, Team, and Pokemon.Pokemon classes.
+ * A class for testing the Project.Tracker, Project.Team, and Pokemon.Pokemon classes.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 2.0 - March 18, 2025
@@ -309,8 +311,8 @@ public class TrackerTest extends Tracker {
         Tracker.teams.add(team);
         Tracker.teams.add(teamTwo);
 
-        String expected = "\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + 25 + " ATK.";
-        String actual = "\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + getAvgAtk() + " ATK.";
+        String expected = "\nThe average attack value of all Pokemon.Pokemon in the Project.Tracker is: " + 25 + " ATK.";
+        String actual = "\nThe average attack value of all Pokemon.Pokemon in the Project.Tracker is: " + getAvgAtk() + " ATK.";
 
         assertEquals(expected,actual);
     }
@@ -318,7 +320,7 @@ public class TrackerTest extends Tracker {
     @Test
     void testReadFile(){
         //simply need to test that something exists when reading the file
-        // for a more accurate test, run Tracker.java and then try importing
+        // for a more accurate test, run Project.Tracker.java and then try importing
         Tracker.readFile("Tracker.csv");
         assertNotEquals(null, Tracker.teams);
     }

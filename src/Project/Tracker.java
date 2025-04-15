@@ -1,14 +1,15 @@
+package Project;
+
 import Pokemon.*;
 
 import Type.Type;
 import java.util.Comparator;
-import java.util.Collections;
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- * CPSC 233 W25 Project Tracker Class
+ * CPSC 233 W25 Project Project.Tracker Class
  * A class for tracking Pokemon.Pokemon statistics.
  *
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
@@ -18,12 +19,12 @@ public class Tracker {
     protected static ArrayList<Team> teams = new ArrayList<>();
 
     /**
-     * Adds a Team to the Tracker.
+     * Adds a Project.Team to the Project.Tracker.
      * Done by Hasan Salhi.
      */
     public static void addTeam() {
         teams.add(new Team());
-        // making a new Team object
+        // making a new Project.Team object
     }
 
     /**
@@ -199,7 +200,7 @@ public class Tracker {
     }
 
     /**
-     * Returns the menu of the Tracker.
+     * Returns the menu of the Project.Tracker.
      * Done by Jade Torres.
      *
      * @return a String menu.
@@ -384,7 +385,7 @@ public class Tracker {
 
 
     /**
-     * The main method for running the Tracker.
+     * The main method for running the Project.Tracker.
      * Done by Jordan Tran.
      */
     public static void main(String[] args)  {
@@ -399,7 +400,7 @@ public class Tracker {
             switch(choice){ // switch to handle numbers as well as inputs greater than 12 or less than 1
                 case 1:
                     addTeam();
-                    System.out.println("\nTeam added.");
+                    System.out.println("\nProject.Team added.");
                     break;
                 case 2: {
                     if (teams.isEmpty()) { // make sure teams is not empty
@@ -565,7 +566,7 @@ public class Tracker {
                 }
 
                 case 10: {
-                    System.out.println("\nThe average attack value of all Pokemon.Pokemon in the Tracker is: " + getAvgAtk() + " ATK.");
+                    System.out.println("\nThe average attack value of all Pokemon.Pokemon in the Project.Tracker is: " + getAvgAtk() + " ATK.");
                     break;
                 }
 
@@ -606,6 +607,6 @@ public class Tracker {
             }
 
         }while(choice != -1); // do while to loop through menu
-        System.out.println("\nTracker closed.");
+        System.out.println("\nProject.Tracker closed.");
     }
 }
