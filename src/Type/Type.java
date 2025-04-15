@@ -28,6 +28,14 @@ public enum Type {
         return resistances;
     }
 
+    /*
+    returns a list of all the types, that is it.
+     */
+    public static List<Type> getTypes(){
+        return List.of(NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, FIGHTING, POISON, GROUND,
+                FLYING, PSYCHIC, BUG, ROCK, GHOST, DRAGON, DARK, STEEL, FAIRY, NONE);
+    }
+
     // block of code that runs on class startup
     static {
         NORMAL.weaknesses = List.of(FIGHTING);

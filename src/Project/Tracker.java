@@ -3,6 +3,17 @@ package Project;
 import Pokemon.*;
 
 import Type.Type;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.media.Track;
+import javafx.stage.Stage;
+
 import java.util.Comparator;
 import java.io.*;
 import java.util.Scanner;
@@ -15,7 +26,7 @@ import java.util.ArrayList;
  * @author Jade Torres, Jordan Tran, Hasan Salhi T01
  * @version 2.1 - March 22, 2025
  */
-public class Tracker {
+public class Tracker{
     protected static ArrayList<Team> teams = new ArrayList<>();
 
     /**
@@ -388,6 +399,7 @@ public class Tracker {
      * The main method for running the Project.Tracker.
      * Done by Jordan Tran.
      */
+    /*
     public static void main(String[] args)  {
         Scanner scan = new Scanner(System.in); // make scanner
         int choice;
@@ -608,5 +620,5 @@ public class Tracker {
 
         }while(choice != -1); // do while to loop through menu
         System.out.println("\nProject.Tracker closed.");
-    }
+    }*/
 }

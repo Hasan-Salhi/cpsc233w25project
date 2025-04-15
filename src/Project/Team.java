@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Team {
     private static int totalTeams = 0;
-    private int teamNum; // unique number for each team
+    private static int teamNum; // unique number for each team
     private ArrayList<Pokemon> pokemon;
     private final int maxPokemon = 6; // max 6 pokemon per team
 
@@ -43,7 +43,7 @@ public class Team {
      *
      * @return field number.
      */
-    public int getNumber() {
+    public static int getNumber() {
         return teamNum;
     }
 

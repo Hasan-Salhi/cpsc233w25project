@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="TrackerController.java" type="Application" factoryName="Application" activateToolWindowBeforeRun="false">
+    <option name="MAIN_CLASS_NAME" value="Project.TrackerController" />
+    <module name="cpsc233w25project" />
+    <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\shado\IdeaProjects\javafx-sdk-24\lib&quot; --add-modules=javafx.controls,javafx.fxml --add-opens=javafx.graphics/com.sun.javafx.util=ALL-UNNAMED --add-opens=javafx.base/com.sun.javafx.reflect=ALL-UNNAMED" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
