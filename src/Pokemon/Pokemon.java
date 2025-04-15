@@ -208,6 +208,20 @@ public abstract class Pokemon {
         return toReturn.toString();
     }
 
+    public String stringVer(){
+        StringBuilder toReturn = new StringBuilder();
+        toReturn.append("Name: ").append(this.getName()).append("\n");
+        toReturn.append("HP: ").append(this.getHP()).append("\n");
+        toReturn.append("ATK: ").append(this.getAttack()).append("\n");
+        toReturn.append("Primary Type: ").append(this.getTypeOne()).append("\n");
+        toReturn.append("Secondary Type: ").append(this.getTypeTwo()).append("\n");
+        toReturn.append("Move: ").append(this.getMove()).append("\n");
+        toReturn.append("Item: ").append(this.getItem()).append("\n");
+        toReturn.append("Wins: ").append(this.getWins()).append("\n");
+        toReturn.append("Losses: ").append(this.getLosses()).append("\n");
+
+        return toReturn.toString();
+    }
     /**
      * Returns a String representation of a Pokemon.Pokemon.
      * Done by Jade Torres.
@@ -216,19 +230,7 @@ public abstract class Pokemon {
      */
     @Override
     public String toString() {
-        StringBuilder statistics = new StringBuilder();
-
-        statistics.append("Pokemon: ").append(name);
-        statistics.append("\nHP: ").append(hp);
-        statistics.append("\nAttack: ").append(attack);
-        statistics.append("\nType: ").append(typeOne);
-        statistics.append("\nSecond Type: ").append(typeTwo);
-        statistics.append("\nMove: ").append(move);
-        statistics.append("\nItem: ").append(item);
-        statistics.append("\nWins: ").append(wins);
-        statistics.append("\nLosses: ").append(losses);
-
-        return statistics.toString();
+        return this.name;
     }
 
     /**

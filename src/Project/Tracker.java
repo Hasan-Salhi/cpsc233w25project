@@ -105,7 +105,7 @@ public class Tracker{
             top3.append("\nSecond: ").append(allPokemon.get(1).getName()).append(" with ").append(allPokemon.get(1).getHP()).append(" HP.");
         }
         if(allPokemon.size() > 2){ //ensures all 3 needed pokemon exist
-            top3.append("\nThird: ").append(allPokemon.get(1).getName()).append(" with ").append(allPokemon.get(1).getHP()).append(" HP.");
+            top3.append("\nThird: ").append(allPokemon.get(2).getName()).append(" with ").append(allPokemon.get(1).getHP()).append(" HP.");
         }
         return top3.toString();
     }
@@ -134,7 +134,7 @@ public class Tracker{
             top3.append("\nSecond: ").append(allPokemonNameAttack.get(1).getName()).append(" with ").append(allPokemonNameAttack.get(1).getAttack()).append(" ATK.");
         } // basically just making sure the proper amount of Pokemon exist.
         if(allPokemonNameAttack.size() > 2){
-            top3.append("\nThird: ").append(allPokemonNameAttack.get(1).getName()).append(" with ").append(allPokemonNameAttack.get(1).getAttack()).append(" ATK.");
+            top3.append("\nThird: ").append(allPokemonNameAttack.get(2).getName()).append(" with ").append(allPokemonNameAttack.get(1).getAttack()).append(" ATK.");
         }
         return top3.toString();
     }
@@ -185,11 +185,12 @@ public class Tracker{
 
         //calculates average
         int mean = 0;
-        for (Integer attack : allAtk) {
-            mean += attack;
+        if(!allAtk.isEmpty()){
+            for (Integer attack : allAtk) {
+                mean += attack;
+            }
+            mean /= allAtk.size();
         }
-        mean /= allAtk.size();
-
         return mean;
     }
 
@@ -256,9 +257,11 @@ public class Tracker{
      *
      * @param fileName, the file name of the file to be read.
      */
-    public static void readFile(String fileName){
+    public static void readFile(File fileName){
+        teams.clear();
+        Team.resetTotalTeam(); // reset everything
         try {
-            BufferedReader br = new BufferedReader(new FileReader("src/" + fileName));
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
 
             String line; // line to temporarily store data from reader
             ArrayList<String[]> lineValues = new ArrayList<>(); // arraylist to store string list values
@@ -270,8 +273,9 @@ public class Tracker{
 
             int teamCount = Integer.parseInt((lineValues.getLast())[0]); // integer to count number of team for team number variable
             // obtained by getting the team number of the last team in the list
-            for(int i = 0; i < teamCount; i++){
+            for(int i = 1; i < teamCount + 1; i++){
                 addTeam(); //adding teams to the arraylist
+                TrackerController.options.add("Team " + i);
             }
 
             for(String[] currentLine : lineValues){ // looping through arraylist of data
@@ -306,11 +310,9 @@ public class Tracker{
      * Writes current data to a file.
      * Done by Jordan Tran.
      */
-    public static void writeFile(String fileName){
-        String srcPath = new File("src").getAbsolutePath();
-        String filePath = srcPath + "/" + fileName; // Ensure correct path
+    public static void writeFile(File fileName){
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filePath))); // making a bufferedWriter
+            BufferedWriter bw = new BufferedWriter(new FileWriter(fileName)); // making a bufferedWriter
             for(Team team : teams){ // looping through teams list
                 ArrayList<Pokemon> pokemon = team.getPokemon(); // get arraylist of Pokemon.Pokemon
                 int teamNumber = team.getNumber(); // get teamNumber integer
@@ -388,6 +390,8 @@ public class Tracker{
                 return new RockPokemon(name,hp,atk,typeOne,typeTwo);
             }case STEEL ->{
                 return new SteelPokemon(name,hp,atk,typeOne,typeTwo);
+            }case WATER ->{
+                return new WaterPokemon(name,hp,atk,typeOne,typeTwo);
             }
         }
 
@@ -399,7 +403,7 @@ public class Tracker{
      * The main method for running the Project.Tracker.
      * Done by Jordan Tran.
      */
-    /*
+
     public static void main(String[] args)  {
         Scanner scan = new Scanner(System.in); // make scanner
         int choice;
@@ -601,7 +605,8 @@ public class Tracker{
                     scan.nextLine();
 
                     System.out.println("\nPlease enter the name of the .csv file you would like to import.");
-                    String fileName = scan.nextLine(); // getting name of the file
+                    File fileName = new File(scan.nextLine());
+                     // getting name of the file
 
                     readFile(fileName);
                     break;
@@ -611,7 +616,7 @@ public class Tracker{
                     //"Fake" input to parse out the extra \n when the user presses enter.
                     scan.nextLine();
                     System.out.println("\nPlease enter the name of the .csv file you would like to write to.");
-                    String fileName = scan.nextLine();
+                    File fileName = new File(scan.nextLine());
 
                     writeFile(fileName);
                     break;
@@ -620,5 +625,5 @@ public class Tracker{
 
         }while(choice != -1); // do while to loop through menu
         System.out.println("\nProject.Tracker closed.");
-    }*/
+    }
 }

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -321,7 +322,8 @@ public class TrackerTest extends Tracker {
     void testReadFile(){
         //simply need to test that something exists when reading the file
         // for a more accurate test, run Project.Tracker.java and then try importing
-        Tracker.readFile("Tracker.csv");
+        File toWrite = new File("Tracker.csv");
+        Tracker.readFile(toWrite);
         assertNotEquals(null, Tracker.teams);
     }
 
@@ -337,9 +339,10 @@ public class TrackerTest extends Tracker {
         //testing team
         Tracker.teams.add(team);
         Tracker.teams.add(teamTwo);
+        File toWrite = new File("testing.csv");
 
-        Tracker.writeFile("testing.csv");
-        Tracker.readFile("testing.csv"); // write file then read said file to make sure it is not empty
+        Tracker.writeFile(toWrite);
+        Tracker.readFile(toWrite); // write file then read said file to make sure it is not empty
         assertNotEquals(null, Tracker.teams);
     }
 

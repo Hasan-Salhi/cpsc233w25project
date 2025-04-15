@@ -13,9 +13,8 @@ import java.util.ArrayList;
  */
 public class Team {
     private static int totalTeams = 0;
-    private static int teamNum; // unique number for each team
+    private final int teamNum; // unique number for each team
     private ArrayList<Pokemon> pokemon;
-    private final int maxPokemon = 6; // max 6 pokemon per team
 
     /**
      * Constructs a new Project.Team object.
@@ -27,6 +26,16 @@ public class Team {
         pokemon = new ArrayList<>();
     }
 
+    public static int getTotalTeams(){
+        return totalTeams;
+    }
+
+    /**
+     * resets totalteams to 0
+     */
+    public static void resetTotalTeam(){
+        totalTeams = 0;
+    }
     /**
      * Adds a Pokemon.Pokemon to a Project.Team.
      * Done by Hasan Salhi.
@@ -43,8 +52,8 @@ public class Team {
      *
      * @return field number.
      */
-    public static int getNumber() {
-        return teamNum;
+    public int getNumber() {
+        return this.teamNum;
     }
 
     /**
