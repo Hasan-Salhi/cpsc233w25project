@@ -34,5 +34,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="libtest" level="project" />
+    <orderEntry type="library" name="main" level="project" />
   </component>
 </module>

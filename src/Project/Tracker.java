@@ -149,26 +149,32 @@ public class Tracker{
     public static String getAllType(Type type) {
         StringBuilder pokemonCommonType = new StringBuilder();
         ArrayList<String> allPokemonNameType = new ArrayList<>();
+        boolean exists = false;
 
-        //Adds Pokemon.Pokemon name to arraylist of name if one of types is matching
+        //Adds Pokemon name to arraylist of name if one of types is matching
         for (Team team : teams) {
             for (Pokemon pokemon : team.getPokemon()) {
                 if (pokemon.getTypeOne().equals(type) || pokemon.getTypeTwo().equals(type)) {
+                    exists = true;
                     allPokemonNameType.add(pokemon.getName());
                 }
             }
         }
 
-        //Appends all names to StringBuilder in a list manner
-        for (String pokemonName : allPokemonNameType) {
-            pokemonCommonType.append(pokemonName).append("\n");
-        }
+        //Appends all names to StringBuilder in a list manner if there are Pokemon with the type
+        if (exists) {
+            for (String pokemonName : allPokemonNameType) {
+                pokemonCommonType.append(pokemonName).append("\n");
+            }
 
-        return pokemonCommonType.toString();
+            return pokemonCommonType.toString();
+        }
+        //Otherwise, it just explains there are none
+        return "There are no Pokemon of type " + type.toString();
     }
 
     /**
-     * Returns average attack of all Pokemon.Pokemon.
+     * Returns average attack of all Pokemon.
      * Done by Hasan Salhi.
      *
      * @return average attack value for all pokemon.

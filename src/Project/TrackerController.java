@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -70,7 +71,6 @@ public class TrackerController extends Application {
     private TextField pokeWins;
     @FXML
     private TextField pokeLosses;
-
 
     @FXML
     static ObservableList<String> options = FXCollections.observableArrayList(); // updates the teams choicebox over time
@@ -182,11 +182,14 @@ public class TrackerController extends Application {
                         if (team.getNumber() == num) {
                             // loop through team list to get desired team
                             team.addPokemon(toAdd); // add said pokemon
+
+                            teamPokemon.getItems().add(toAdd);
                             return;
                         }
                     }
                 }
             }
+
         }catch(NumberFormatException e){ // catches having no integer value
             leftStatus.setText("Missing integer parameter.");
         }
@@ -221,6 +224,16 @@ public class TrackerController extends Application {
             toAdd.setWins(wins);
             toAdd.setLosses(losses); // setting parameters
             leftStatus.setText(""); // clear status
+
+            StringBuilder toSet = new StringBuilder();
+            toSet.append(toAdd.stringVer()).append("\n\n")
+                    .append(toAdd.getTypeWeakness()).append("\n\n")
+                    .append(toAdd.getSTAB()).append("\n")
+                    .append(toAdd.useMove()).append("\n\n")
+                    .append(toAdd.typePassive());
+
+            pokeInfo.setText(toSet.toString());
+
         }catch(NumberFormatException e){
             leftStatus.setText("Missing integer parameter.");
         }
